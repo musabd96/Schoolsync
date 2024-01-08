@@ -1,0 +1,177 @@
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio files
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# .gitignore file for C# projects
+bin/
+obj/
+*.user
+*.suo
+*.nuget/
+*.dotCover
+*.resharper
+_ReSharper*/
+*.ncrunch*
+*.dotSettings.user
+*.sln.docstates
+
+
+# User-specific files
+*.suo
+*.user
+*.suo
+*.user
+
+# Compiled object files
+bin/
+obj/
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Visual Studio Code directories
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac desktop service store files
+.DS_Store
+
+# Visual Studio for Mac
+.idea/
+
+# User-specific files
+*.suo
+*.user
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+
+# Visual Studio 2017/2019
+.vs2017/
+.vs2019/
+ipch/
+out/
+
+# Rider
+.idea/
+.idea.misc.xml
+.idea/modules.xml
+.idea/dictionaries
+.idea/caches
+.idea/libraries
+.idea/assetWizardSettings
+
+# User-specific files
+*.suo
+*.user
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Bower
+bower_components/
+
+# NativeScript
+node_modules/
+platforms/
+
+# Visual Studio Code
+.vscode/
+.idea/
+.project
+.cproject
+.settings/
+.classpath
+
+# Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.suo
+*.user
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
