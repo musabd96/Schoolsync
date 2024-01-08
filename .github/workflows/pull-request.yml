@@ -1,0 +1,30 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches: [development, production]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Format the code
+        run: dotnet format --verbosity diagnostic --verify-no-changes
+
+      - name: Restore dependencies
+        run: dotnet restore --disable-parallel
+
+      - name: Build the solution
+        run: dotnet build --no-restore
+
+      - name: Run all tests
+        run: dotnet test --no-build --verbosity normal --no-restore
