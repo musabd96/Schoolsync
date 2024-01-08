@@ -1,6 +1,6 @@
 # SchoolSync
 
-SchoolSync is a comprehensive school management system that includes a React-based client application (SchoolSync.Client) for the frontend and an ASP.NET Core-based server (SchoolSync.Server) for the backend.
+SchoolSync is a comprehensive high school management system developed using React and ASP.NET Core. This project aims to streamline and automate various aspects of high school administration, providing an efficient and centralized platform for teachers, students, and administrators.
 
 ## Table of Contents
 
