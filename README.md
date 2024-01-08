@@ -8,11 +8,7 @@ SchoolSync is a comprehensive school management system that includes a React-bas
   - [Installation](#installation)
     - [Dependencies](#dependencies)
   - [Running the Application](#running-the-application)
-    - [React Client](#react-client)
-    - [ASP.NET Core Server](#aspnet-core-server)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -42,7 +38,7 @@ Follow the instructions below to set up and run the project on your local machin
 1. **Open the Solution:**
    - Open the solution file (SchoolSync.sln) in Visual Studio.
 
-### Project Structure
+## Project Structure
 
 The project is organized into two main components:
 
