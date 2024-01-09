@@ -1,5 +1,4 @@
 ﻿
-
 namespace Application.Dtos.MediatR
 {
     public class OperationResult<T>
