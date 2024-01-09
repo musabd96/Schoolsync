@@ -1,6 +1,0 @@
-@SchoolSync.Server_HostAddress = http://localhost:5008
-
-GET {{SchoolSync.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
