@@ -1,8 +1,7 @@
 ﻿
-
 namespace Application.Dtos.School
 {
-    internal class GradeDto
+    public class GradeDto
     {
     }
 }
