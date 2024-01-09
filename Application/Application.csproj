@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Users\" />
+    <Folder Include="Commands\Grades\" />
+    <Folder Include="Commands\Subjects\" />
+    <Folder Include="Commands\Classes\" />
+    <Folder Include="Commands\Teachers\" />
+    <Folder Include="Commands\Students\" />
+    <Folder Include="Dtos\Validation\" />
+    <Folder Include="Dtos\Users\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Queries\Classes\" />
+    <Folder Include="Queries\Grades\" />
+    <Folder Include="Queries\Students\" />
+    <Folder Include="Queries\Subjects\" />
+    <Folder Include="Queries\Teachers\" />
+    <Folder Include="Queries\Users\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
+</Project>
