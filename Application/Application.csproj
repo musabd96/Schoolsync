@@ -18,6 +18,7 @@
     <Folder Include="Commands\Classes\" />
     <Folder Include="Commands\Teachers\" />
     <Folder Include="Commands\Students\" />
+    <Folder Include="Dtos\School\" />
     <Folder Include="Dtos\Validation\" />
     <Folder Include="Dtos\Users\" />
     <Folder Include="Exceptions\" />
