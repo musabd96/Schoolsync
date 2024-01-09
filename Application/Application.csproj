@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Subjects\" />
+    <Folder Include="Commands\Teachers\" />
+    <Folder Include="Commands\Grades\" />
+    <Folder Include="Commands\Classes\" />
+    <Folder Include="Commands\Students\" />
+    <Folder Include="Dtos\MediatR\" />
+    <Folder Include="Dtos\School\" />
+    <Folder Include="Dtos\Users\" />
+    <Folder Include="Dtos\Validations\" />
+    <Folder Include="Queries\Classes\" />
+    <Folder Include="Queries\Grades\" />
+    <Folder Include="Queries\Students\" />
+    <Folder Include="Queries\Subjects\" />
+    <Folder Include="Queries\Teachers\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Validators\Classes\" />
+    <Folder Include="Validators\Grades\" />
+    <Folder Include="Validators\Students\" />
+    <Folder Include="Validators\Subjects\" />
+    <Folder Include="Validators\Teachers\" />
+  </ItemGroup>
+
+</Project>
