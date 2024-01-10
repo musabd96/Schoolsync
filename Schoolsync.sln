@@ -6,19 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{3222B1C0-4E22-4811-A783-291086A24CD3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{808F5D41-31AB-497D-97BD-9F50618E7CC0}"
-	ProjectSection(SolutionItems) = preProject
-		User.cs = User.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Student", "Student", "{6166DCB4-48E6-418A-AE16-F658FCA0EFF3}"
-	ProjectSection(SolutionItems) = preProject
-		Student.cs = Student.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Teacher", "Teacher", "{C4DEA1A0-AA6A-4EDC-A7F1-5E7478CC46A9}"
-	ProjectSection(SolutionItems) = preProject
-		Teacher.cs = Teacher.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
