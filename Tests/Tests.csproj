@@ -17,4 +17,11 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Student\Commands\" />
+    <Folder Include="Student\Queries\" />
+    <Folder Include="Teacher\Commands\" />
+    <Folder Include="Teacher\Queries\" />
+  </ItemGroup>
+
 </Project>
