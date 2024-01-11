@@ -23,4 +23,9 @@
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\TeacherController\" />
+    <Folder Include="Controllers\StudentController\" />
+  </ItemGroup>
+
 </Project>
