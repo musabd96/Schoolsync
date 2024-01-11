@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F86FC730-2D86-492B-B38B-30DD78E18036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{24A27818-8FD5-46AA-984C-CCCFEBF84D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{24A27818-8FD5-46AA-984C-CCCFEBF84D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FA9FEDB5-8A87-4B07-BA8B-C84BA145C98A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{FA9FEDB5-8A87-4B07-BA8B-C84BA145C98A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactApp.Server", "ReactApp\ReactApp.Server\ReactApp.Server.csproj", "{733F27E9-58BE-45DF-AA05-A0AAC634F366}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactapp.client", "ReactApp\reactapp.client\reactapp.client.esproj", "{A76BB78C-017C-4E6D-A3AA-0DDF5359511E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,16 @@ Global
 		{FA9FEDB5-8A87-4B07-BA8B-C84BA145C98A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA9FEDB5-8A87-4B07-BA8B-C84BA145C98A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA9FEDB5-8A87-4B07-BA8B-C84BA145C98A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{733F27E9-58BE-45DF-AA05-A0AAC634F366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733F27E9-58BE-45DF-AA05-A0AAC634F366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733F27E9-58BE-45DF-AA05-A0AAC634F366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733F27E9-58BE-45DF-AA05-A0AAC634F366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76BB78C-017C-4E6D-A3AA-0DDF5359511E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76BB78C-017C-4E6D-A3AA-0DDF5359511E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76BB78C-017C-4E6D-A3AA-0DDF5359511E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A76BB78C-017C-4E6D-A3AA-0DDF5359511E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76BB78C-017C-4E6D-A3AA-0DDF5359511E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76BB78C-017C-4E6D-A3AA-0DDF5359511E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
