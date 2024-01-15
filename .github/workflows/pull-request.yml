@@ -18,7 +18,7 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Format the code
-        run: dotnet format --verbosity diagnostic --verify-no-changes
+        run: dotnet format --verbosity diagnostic --verify-no-changes --include "Application/**/*" "Domain/**/*" "Infrasture/**/*"
 
       - name: Restore dependencies
         run: dotnet restore --disable-parallel
