@@ -1,0 +1,20 @@
+name: Deploy to Development
+
+on:
+  pull_request:
+    branches:
+      - development
+    types:
+      - closed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: development
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Development Environment
+        run: echo "Deploying to Development Environment..."
