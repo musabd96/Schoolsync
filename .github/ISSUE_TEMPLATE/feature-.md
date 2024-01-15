@@ -1,13 +1,13 @@
 ---
 name: 'Feature '
 about: Suggest an idea for this feature
-title: ''
-labels: ''
+title: 'Feature '
+labels: feature
 assignees: ''
 
 ---
 
-## Feature Request: 
+## Feature Request: [Feature Name]
 
 **Describe the feature you'd like to see added.**
 
