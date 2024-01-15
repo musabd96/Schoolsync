@@ -12,17 +12,4 @@
     <None Remove="Exceptions\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\Students\AddStudent\" />
-    <Folder Include="Commands\Students\DeleteStudent\" />
-    <Folder Include="Commands\Students\UpdateStudent\" />
-    <Folder Include="Commands\Teachers\AddTeacher\" />
-    <Folder Include="Commands\Teachers\DeleteTeacher\" />
-    <Folder Include="Commands\Teachers\UpdateTeacher\" />
-    <Folder Include="Queries\Students\GetAllStudents\" />
-    <Folder Include="Queries\Students\GetStudentById\" />
-    <Folder Include="Queries\Teachers\GetAllTeachers\" />
-    <Folder Include="Queries\Teachers\GetTeacherById\" />
-  </ItemGroup>
-
 </Project>
