@@ -1,8 +1,8 @@
 ---
-name: 'Feature '
+name: Feature To Do List
 about: Suggest an idea for this feature
-title: ''
-labels: ''
+title: 'Feature '
+labels: feature
 assignees: ''
 
 ---
@@ -13,12 +13,17 @@ assignees: ''
 
 [Provide a clear and concise description of the feature.]
 
-
 ## Checklist
-[Checklist for this feature need it to done.]
-- [ ] **1** 
-- [ ] **2** 
-- [ ] **3** 
+
+**Feature Description**
+  [A clear and concise description of the feature has been provided.]
+
+
+## Backlog Task Details
+
+- [ ] **Task ID:** #
+- [ ] **Task ID:** #
+- [ ] **Task ID:** #
 
 ## Additional Information
 
