@@ -5,26 +5,40 @@ namespace ReactApp.Server.Controllers.StudentController
 {
     public class StudentController : Controller
     {
-        // GET: StudentController
-        public ActionResult Index()
+        
+        //GetAllStudents
+        [HttpGet]
+        [Route("GetAllStudents")]
+        public ActionResult Getall(IFormCollection collection)
         {
-            return View();
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: StudentController/Details/5
-        public ActionResult Details(int id)
+
+        [HttpGet]
+        [Route("GetById")]
+        public ActionResult GetById(IFormCollection collection)
         {
-            return View();
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: StudentController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: StudentController/Create
+        // AddStudents
         [HttpPost]
+        [Route("addNewStudent")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
@@ -38,14 +52,10 @@ namespace ReactApp.Server.Controllers.StudentController
             }
         }
 
-        // GET: StudentController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: StudentController/Edit/5
+        //UpdateStudent
         [HttpPost]
+        [Route("updateStudent")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
@@ -59,14 +69,8 @@ namespace ReactApp.Server.Controllers.StudentController
             }
         }
 
-        // GET: StudentController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: StudentController/Delete/5
-        [HttpPost]
+        //Delete Student
+        [HttpPost("{id}")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {

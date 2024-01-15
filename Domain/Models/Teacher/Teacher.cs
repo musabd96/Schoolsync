@@ -1,6 +1,6 @@
 ﻿namespace Domain.Models.Teacher
 {
-	public class Teacher
+    public class Teacher
     {
     }
 }
