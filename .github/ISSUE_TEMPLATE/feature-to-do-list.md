@@ -7,23 +7,27 @@ assignees: ''
 
 ---
 
-## Feature Request: 
+## Feature Request: [Feature Name]
 
-**Describe the feature you'd like to see added.**
+**Description**
 
 [Provide a clear and concise description of the feature.]
 
 ## Checklist
 
-**Feature Description**
-  [A clear and concise description of the feature has been provided.]
+**Feature Implementation Details**
 
+Describe the necessary changes for implementing this feature, specifying the areas where new code needs to be added and detailing the changes in:
+
+  - [ ] **API Controller:** 
+  - [ ] **Application:** 
+  - [ ] **Infrastructure:** 
 
 ## Backlog Task Details
 
-- [ ] **Task ID:** #
-- [ ] **Task ID:** #
-- [ ] **Task ID:** #
+- [ ] **Task ID: #**
+- [ ] **Task ID: #**
+- [ ] **Task ID: #**
 
 ## Additional Information
 
