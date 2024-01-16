@@ -1,9 +1,10 @@
-﻿namespace Domain.Models.Student
-{
-    public class Student
-    {
-        public Guid StudentId { get; set; }
-        public string StudentName { get; set;} = string.Empty;
+﻿using Domain.Models.Person;
 
+namespace Domain.Models.Student
+
+{
+    public class Student : PersonModel
+    {
+        public bool CanStudy { get; set; }
     }
 }
