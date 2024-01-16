@@ -1,7 +1,7 @@
-﻿using Application.Queries.Students.GetAllStudents;
+﻿using Application.Dtos;
+using Application.Queries.Students.GetAllStudents;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
 namespace ReactApp.Server.Controllers.StudentController
 {
@@ -23,12 +23,24 @@ namespace ReactApp.Server.Controllers.StudentController
             {
                 var query = new GetAllStudentsQuery();
                 var result = await _mediator.Send(query);
-                return Ok();
+
+                // Check if the result is a valid list of students
+                if (result is List<StudentDto> students && students.Any())
+                {
+                    // Return OkObjectResult with the list of students
+                    return Ok(students);
+                }
+                else
+                {
+                    // Return OkResult with an empty result or handle accordingly
+                    return Ok();
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
+
     }
 }
