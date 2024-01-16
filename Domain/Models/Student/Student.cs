@@ -1,6 +1,9 @@
-﻿namespace Domain.Models.Student
+﻿using Domain.Models.Person;
+
+namespace Domain.Models.Student
+
 {
-    public class Student
+    public class Student : PersonModel
     {
     }
 }

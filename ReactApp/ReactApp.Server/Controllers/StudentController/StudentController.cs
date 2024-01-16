@@ -5,7 +5,7 @@ namespace ReactApp.Server.Controllers.StudentController
 {
     public class StudentController : Controller
     {
-        
+
         //GetAllStudents
         [HttpGet]
         [Route("GetAllStudents")]
