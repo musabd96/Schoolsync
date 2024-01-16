@@ -5,6 +5,5 @@ namespace Domain.Models.Student
 {
     public class Student : PersonModel
     {
-        public bool CanStudy { get; set; }
     }
 }
