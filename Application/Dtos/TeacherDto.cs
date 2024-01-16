@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Dtos
 {
-    internal class TeacherDto
+    public class TeacherDto
     {
     }
 }

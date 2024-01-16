@@ -1,38 +1,49 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ReactApp.Server.Controllers.StudentController
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class StudentController : Controller
     {
+        private readonly IMediator _mediator;
 
+        public StudentController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+
+    
         //GetAllStudents
         [HttpGet]
         [Route("GetAllStudents")]
-        public ActionResult Getall(IFormCollection collection)
+        public async Task<IActionResult>GetAllStudents()
         {
             try
             {
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return StatusCode(500, ex.Message);
             }
         }
 
 
         [HttpGet]
         [Route("GetById")]
-        public ActionResult GetById(IFormCollection collection)
+        public async Task<IActionResult> GetStudentById(IFormCollection collection)
         {
             try
             {
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -40,15 +51,15 @@ namespace ReactApp.Server.Controllers.StudentController
         [HttpPost]
         [Route("addNewStudent")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> AddStudent()
         {
             try
             {
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -57,30 +68,30 @@ namespace ReactApp.Server.Controllers.StudentController
         [HttpPost]
         [Route("updateStudent")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> UpdateStudent()
         {
             try
             {
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return StatusCode(500, ex.Message);
             }
         }
 
         //Delete Student
         [HttpPost("{id}")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> DeleteStudent()
         {
             try
             {
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return StatusCode(500, ex.Message);
             }
         }
     }
