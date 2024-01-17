@@ -1,5 +1,5 @@
 ﻿
-namespace Infrastructure.Repositories.Student
+namespace Infrastructure.Repositories.Students
 {
     public class StudentRepositry
     {
