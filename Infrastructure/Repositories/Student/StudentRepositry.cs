@@ -1,7 +1,7 @@
 ﻿
 namespace Infrastructure.Repositories.Student
 {
-    public class StudentRepositry
+    public class StudentRepositry : IStudentRepositry
     {
     }
 }
