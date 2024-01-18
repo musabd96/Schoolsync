@@ -1,6 +1,7 @@
 ﻿
 
 using Domain.Models.Teacher;
+using Infrastructure.Database;
 
 namespace Infrastructure.Repositories.Teachers
 {
@@ -21,9 +22,9 @@ namespace Infrastructure.Repositories.Teachers
             throw new NotImplementedException();
         }
 
-        public Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken)
+        public async Task<Teacher> GetTeacherById(Guid id)
         {
-            throw new NotImplementedException();
+            return await AppDbContext.Teachers.FindAsync(id);
         }
 
         public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
