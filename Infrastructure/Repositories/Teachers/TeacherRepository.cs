@@ -4,7 +4,7 @@ using Domain.Models.Teacher;
 
 namespace Infrastructure.Repositories.Teachers
 {
-    public class TeacherRepositry : ITeacherRepositry
+    public class TeacherRepository : ITeacherRepository
     {
         public Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
         {

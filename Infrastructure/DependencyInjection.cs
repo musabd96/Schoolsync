@@ -8,8 +8,8 @@ namespace Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddScoped<IStudentRepositry, StudentRepositry>();
-            services.AddScoped<ITeacherRepositry, TeacherRepositry>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<ITeacherRepository, TeacherRepository>();
             return services;
         }
     }
