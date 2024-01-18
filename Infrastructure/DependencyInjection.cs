@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Infrastructure.Repositories.Students;
+using Infrastructure.Repositories.Teachers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure
 {
@@ -6,6 +8,8 @@ namespace Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
+            services.AddScoped<IStudentRepositry, StudentRepositry>();
+            services.AddScoped<ITeacherRepositry, TeacherRepositry>();
             return services;
         }
     }
