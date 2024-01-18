@@ -4,7 +4,7 @@ using Domain.Models.Teacher;
 
 namespace Infrastructure.Repositories.Teachers
 {
-    public interface ITeacherRepositry
+    public interface ITeacherRepository
     {
         Task<List<Teacher>> GetAllTeacher(CancellationToken cancellationToken);
         Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken);

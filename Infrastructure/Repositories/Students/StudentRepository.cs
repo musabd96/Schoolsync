@@ -1,10 +1,16 @@
 ﻿
 using Domain.Models.Student;
+using Infrastructure.Database;
 
 namespace Infrastructure.Repositories.Students
 {
-    public class StudentRepositry : IStudentRepositry
+    public class StudentRepository : IStudentRepository
     {
+        private readonly AppDbContext _appDbContext;
+        public StudentRepository(AppDbContext appDbContext)
+        {
+           _appDbContext = appDbContext;
+        }
         public Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
@@ -20,9 +26,9 @@ namespace Infrastructure.Repositories.Students
             throw new NotImplementedException();
         }
 
-        public Task<Student> GetStudentById(Guid id, CancellationToken cancellationToken)
+        public async Task<Student> GetStudentById(Guid id)
         {
-            throw new NotImplementedException();
+            return await AppDbContext.Students.FindAsync(id);
         }
 
         public Task<Student> UpdateStudent(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
