@@ -1,7 +1,7 @@
 
-﻿using Application.Dtos;
+using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
-﻿using Application.Queries.Students.GetStudentById;
+using Application.Queries.Students.GetStudentById;
 using Domain.Models.Student;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

@@ -12,7 +12,7 @@ namespace Application.Queries.Students.GetStudentById
 
             public async Task<StudentModel> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
             {
-                StudentModel wantedStudent = await _studentRepository.GetStudentById(request.Id,cancellationToken);
+                StudentModel wantedStudent = await _studentRepository.GetStudentById(request.Id, cancellationToken);
 
                 try
                 {

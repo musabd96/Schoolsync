@@ -28,7 +28,7 @@ namespace Infrastructure.Repositories.Teachers
             throw new NotImplementedException();
         }
 
-        public async Task<Teacher> GetTeacherById(Guid id,CancellationToken cancellationToken)
+        public async Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken)
         {
             return await _appDbContext.Teacher.FindAsync(id);
         }

@@ -4,7 +4,7 @@ namespace Domain.Models.Student
 {
     public class StudentModel : PersonModel
     {
-     
+
 
     }
 }

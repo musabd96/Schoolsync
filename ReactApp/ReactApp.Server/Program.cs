@@ -27,7 +27,7 @@ namespace ReactApp.Server
 
 
 
-            builder.Services.AddApplication().AddInfrastructure(); 
+            builder.Services.AddApplication().AddInfrastructure();
             var app = builder.Build();
 
             app.UseDefaultFiles();

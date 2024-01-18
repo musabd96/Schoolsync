@@ -8,7 +8,7 @@ namespace Tests.Student.Queries.NewFolder
 {
     public class GetAllStudentTests
     {
-       
+
 
 
 
