@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories.Students
 
         public Task<StudentModel> DeleteStudent(Guid id, CancellationToken cancellationToken)
         {
-            Student student = _appDbContext.Student.FirstOrDefault(s => s.Id == id)!;
+            StudentModel student = _appDbContext.Student.FirstOrDefault(s => s.Id == id)!;
 
             return Task.FromResult(student);
         }
