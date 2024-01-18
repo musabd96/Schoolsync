@@ -16,11 +16,11 @@ namespace ReactApp.Server.Controllers.StudentController
         }
         [HttpGet]
         [Route("getStudentById/{studentId}")]
-        public async Task<IActionResult> GetStudentById(Guid Id)
+        public async Task<IActionResult> GetStudentById(Guid studentId)
         {
-            var query = new GetStudentByIdQuery(Id);
+            var query = new GetStudentByIdQuery(studentId);
             var student = await _mediator.Send(query);
-            return student != null ? Ok(student) : NotFound($"No student found with ID: {Id}");
+            return student != null ? Ok(student) : NotFound($"No student found with ID: {studentId}");
         }
     }
 }

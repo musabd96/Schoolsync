@@ -14,12 +14,12 @@ namespace Infrastructure.Database
         {
         }
 
-        public static DbSet<Student> Students { get; set; }
-        public static DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<Student> Student { get; set; }
+        public virtual DbSet<Teacher> Teacher { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=Schoolsync;User=root;Password=mamamia;"
+            optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=Schoolsync;User=root;Password=mustafa0909;"
                                         , new MySqlServerVersion(new Version(8, 0, 35)));
         }
 
