@@ -42,5 +42,17 @@ namespace ReactApp.Server.Controllers.StudentController
             }
         }
 
+        public StudentController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+        [HttpGet]
+        [Route("getStudentById/{studentId}")]
+        public async Task<IActionResult> GetStudentById(Guid Id)
+        {
+            var query = new GetStudentByIdQuery(Id);
+            var student = await _mediator.Send(query);
+            return student != null ? Ok(student) : NotFound($"No student found with ID: {Id}");
+        }
     }
 }
