@@ -22,7 +22,6 @@
     <Folder Include="Student\Commands\" />
     <Folder Include="Student\Queries\" />
     <Folder Include="Teacher\Commands\" />
-    <Folder Include="Teacher\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
