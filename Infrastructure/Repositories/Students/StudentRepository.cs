@@ -19,7 +19,9 @@ namespace Infrastructure.Repositories.Students
 
         public Task<StudentModel> DeleteStudent(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            Student student = _appDbContext.Student.FirstOrDefault(s => s.Id == id)!;
+
+            return Task.FromResult(student);
         }
 
         public async Task<List<StudentModel>> GetAllStudentsAsync(CancellationToken cancellationToken)

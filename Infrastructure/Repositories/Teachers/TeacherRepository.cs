@@ -15,15 +15,21 @@ namespace Infrastructure.Repositories.Teachers
         }
         public Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            _appDbContext = appDbContext;
         }
 
-        public Task<Teacher> DeleteTeacher(Guid id, CancellationToken cancellationToken)
+        public Task<List<Teacher>> GetAllTeacher(CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Teacher>> GetAllTeacher(CancellationToken cancellationToken)
+        public Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken)
+        {
+            Teacher teacher = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id)!;
+
+            return Task.FromResult(teacher);
+        }
+        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -33,9 +39,10 @@ namespace Infrastructure.Repositories.Teachers
             return await _appDbContext.Teacher.FindAsync(id);
         }
 
-        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Teacher> DeleteTeacher(Guid id, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
+
     }
 }

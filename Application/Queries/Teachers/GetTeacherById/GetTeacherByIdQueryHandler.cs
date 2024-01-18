@@ -10,7 +10,7 @@ namespace Application.Queries.Teachers.GetTeacherById
 
         public async Task<Teacher> Handle(GetTeacherByIdQuery request, CancellationToken cancellationToken)
         {
-            Teacher wantedTeacher = await _teacherRepository.GetTeacherById(request.Id);
+            Teacher wantedTeacher = await _teacherRepository.GetTeacherById(request.Id, cancellationToken);
 
             try
             {
