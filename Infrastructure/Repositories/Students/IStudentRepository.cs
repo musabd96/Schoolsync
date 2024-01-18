@@ -4,7 +4,8 @@ namespace Infrastructure.Repositories.Students
 {
     public interface IStudentRepository
     {
-        Task<List<Student>> GetAllStudent(CancellationToken cancellationToken);
+        Task<List<Student>> GetAllStudentsAsync(CancellationToken cancellationToken);
+
         Task<Student> GetStudentById(Guid id, CancellationToken cancellationToken);
         Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken);
         Task<Student> UpdateStudent(Guid id, string FirstName,

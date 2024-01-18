@@ -7,12 +7,13 @@ namespace Infrastructure.Repositories.Teachers
 {
     public class TeacherRepository : ITeacherRepository
     {
+
         private readonly AppDbContext _appDbContext;
         public TeacherRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
-
+        
         public Task<List<Teacher>> GetAllTeacher(CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
@@ -24,12 +25,13 @@ namespace Infrastructure.Repositories.Teachers
 
             return Task.FromResult(teacher);
         }
-        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
+
         }
 
-        public Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
+        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

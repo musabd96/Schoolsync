@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Student\Commands\" />
-    <Folder Include="Student\Queries\" />
     <Folder Include="Teacher\Commands\" />
     <Folder Include="Teacher\Queries\" />
   </ItemGroup>
@@ -28,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\ReactApp\ReactApp.Server\ReactApp.Server.csproj" />
   </ItemGroup>
 
 </Project>

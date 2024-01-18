@@ -20,7 +20,7 @@ namespace Infrastructure.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=Schoolsync;User=root;Password=mustafa0909;"
-                                        , new MySqlServerVersion(new Version(8, 0, 35)));
+                                        , new MySqlServerVersion(new Version(8, 0, 34)));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
