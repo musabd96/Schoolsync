@@ -1,9 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Queries.Students.GetStudentById;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ReactApp.Server.Controllers.TeacherController
 {
     public class TeacherController : Controller
     {
+        internal readonly IMediator _mediator;
+
+        public TeacherController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
         //GetAllStudents
         [HttpGet]
         [Route("GetAll")]
@@ -21,16 +29,13 @@ namespace ReactApp.Server.Controllers.TeacherController
 
 
         [HttpGet]
-        [Route("GetById")]
-        public ActionResult GetById(IFormCollection collection)
+        [Route("GetTeacherById/{teacherId}")]
+        public async Task<IActionResult> GetTeacherById(Guid Id)
         {
-            try
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                var query = new GetStudentByIdQuery(Id);
+                var teacher = await _mediator.Send(query);
+                return teacher != null ? Ok(teacher) : NotFound($"No teacher found with ID: {Id}");
             }
         }
 

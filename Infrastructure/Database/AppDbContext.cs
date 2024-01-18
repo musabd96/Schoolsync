@@ -19,7 +19,7 @@ namespace Infrastructure.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=Schoolsync;User=root;Password=Mns@19741111;"
+            optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=Schoolsync;User=root;Password=mamamia;"
                                         , new MySqlServerVersion(new Version(8, 0, 35)));
         }
 
