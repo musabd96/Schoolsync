@@ -1,4 +1,10 @@
 
+using Application;
+using Infrastructure;
+using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 namespace ReactApp.Server
 {
     public class Program
@@ -14,6 +20,14 @@ namespace ReactApp.Server
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                    new MySqlServerVersion(new Version(8, 0, 34))));
+
+
+
+
+            builder.Services.AddApplication().AddInfrastructure(); 
             var app = builder.Build();
 
             app.UseDefaultFiles();

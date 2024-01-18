@@ -1,8 +1,10 @@
 ﻿using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
+using Domain.Models.Student;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using NUnit.Framework;
 using ReactApp.Server.Controllers.StudentController;
 
 namespace Tests.Student.Queries.GetAll
@@ -26,22 +28,21 @@ namespace Tests.Student.Queries.GetAll
         public async Task GetAllStudents_ShouldReturnOk()
         {
             // Arrange
-            var expectedStudents = new List<StudentDto>
+            var expectedStudents = new List<StudentModel>
         {
-            new StudentDto
+            new StudentModel
             {
                 FirstName = "Per",
                 LastName = "Andersson",
-                DateOfBirth = new DateTime(2003, 5, 12),
+                DateOfBirth = new DateOnly(2003, 5, 12),
                 Adress = "Kungsgatan 123, Göteborg",
                 PhoneNumber = "+46 70 123 45 67",
                 Email = "elsa.andersson@schoolsync.com"
             },
-            new StudentDto
-            {
+            new StudentModel           {
                 FirstName = "Nelson",
                 LastName = "Doe",
-                DateOfBirth = new DateTime(2005, 5, 5),
+                DateOfBirth = new DateOnly(2005, 5, 5),
                 Adress = "Magasinsgatan 1414, Mölndal",
                 PhoneNumber = "+46 76 789 01 23",
                 Email = "nelson.doe@schoolsync.com"
@@ -51,9 +52,11 @@ namespace Tests.Student.Queries.GetAll
             var query = new GetAllStudentsQuery();
 
             // Mock the Send method of IMediator to return the expected result
+            // Mock the Send method of IMediator to return the expected result
             Mock.Get(_mediator)
-                .Setup(x => x.Send(It.IsAny<GetAllStudentsQuery>(), default))
+                .Setup(x => x.Send(It.IsAny<GetAllStudentsQuery>(), default(CancellationToken)))
                 .ReturnsAsync(expectedStudents);
+
 
             // Act
             var result = await _controller.GetAllStudents();

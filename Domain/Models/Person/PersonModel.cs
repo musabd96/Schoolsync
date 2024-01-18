@@ -1,7 +1,10 @@
-﻿namespace Domain.Models.Person
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Domain.Models.Person
 {
     public class PersonModel
     {
+        [Key]
         public virtual Guid Id { get; set; }
         public virtual string FirstName { get; set; } = string.Empty;
         public virtual string LastName { get; set; } = string.Empty;

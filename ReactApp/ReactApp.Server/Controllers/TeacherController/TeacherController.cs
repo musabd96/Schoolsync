@@ -30,12 +30,12 @@ namespace ReactApp.Server.Controllers.TeacherController
 
         [HttpGet]
         [Route("GetTeacherById/{teacherId}")]
-        public async Task<IActionResult> GetTeacherById(Guid Id)
+        public async Task<IActionResult> GetTeacherById(Guid teacherId)
         {
             {
-                var query = new GetStudentByIdQuery(Id);
+                var query = new GetStudentByIdQuery(teacherId);
                 var teacher = await _mediator.Send(query);
-                return teacher != null ? Ok(teacher) : NotFound($"No teacher found with ID: {Id}");
+                return teacher != null ? Ok(teacher) : NotFound($"No teacher found with ID: {teacherId}");
             }
         }
 
@@ -54,8 +54,6 @@ namespace ReactApp.Server.Controllers.TeacherController
                 return View();
             }
         }
-
-
         //UpdateStudent
         [HttpPost]
         [Route("update")]
