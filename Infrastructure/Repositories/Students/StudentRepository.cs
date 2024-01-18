@@ -9,7 +9,7 @@ namespace Infrastructure.Repositories.Students
         private readonly AppDbContext _appDbContext;
         public StudentRepository(AppDbContext appDbContext)
         {
-           _appDbContext = appDbContext;
+            _appDbContext = appDbContext;
         }
         public Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken)
         {
