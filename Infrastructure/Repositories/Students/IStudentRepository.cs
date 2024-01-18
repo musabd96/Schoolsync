@@ -4,14 +4,14 @@ namespace Infrastructure.Repositories.Students
 {
     public interface IStudentRepository
     {
-        Task<List<StudentModel>> GetAllStudentsAsync(CancellationToken cancellationToken);
+        Task<List<Student>> GetAllStudentsAsync(CancellationToken cancellationToken);
 
-        Task<StudentModel> GetStudentById(Guid id, CancellationToken cancellationToken);
-        Task<StudentModel> AddStudent(StudentModel newStudent, CancellationToken cancellationToken);
-        Task<StudentModel> UpdateStudent(Guid id, string FirstName,
+        Task<Student> GetStudentById(Guid id, CancellationToken cancellationToken);
+        Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken);
+        Task<Student> UpdateStudent(Guid id, string FirstName,
                               string LastName, DateTime DateOfBirth,
                               string Address, string PhoneNumber,
                               string Email, CancellationToken cancellationToken);
-        Task<StudentModel> DeleteStudent(Guid id, CancellationToken cancellationToken);
+        Task<Student> DeleteStudent(Guid id, CancellationToken cancellationToken);
     }
 }

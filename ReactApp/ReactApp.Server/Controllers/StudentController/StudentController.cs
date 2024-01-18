@@ -28,7 +28,7 @@ namespace ReactApp.Server.Controllers.StudentController
                 var result = await _mediator.Send(query);
 
                 // Check if the result is a valid list of students
-                if (result is List<StudentModel> students && students.Any())
+                if (result is List<Student> students && students.Any())
                 {
                     // Return OkObjectResult with the list of students
                     return Ok(students);

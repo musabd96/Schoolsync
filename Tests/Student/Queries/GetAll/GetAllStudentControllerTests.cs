@@ -28,9 +28,9 @@ namespace Tests.Student.Queries.GetAll
         public async Task GetAllStudents_ShouldReturnOk()
         {
             // Arrange
-            var expectedStudents = new List<StudentModel>
+            var expectedStudents = new List<Domain.Models.Student.Student>
         {
-            new StudentModel
+            new Domain.Models.Student.Student
             {
                 FirstName = "Per",
                 LastName = "Andersson",
@@ -39,7 +39,7 @@ namespace Tests.Student.Queries.GetAll
                 PhoneNumber = "+46 70 123 45 67",
                 Email = "elsa.andersson@schoolsync.com"
             },
-            new StudentModel           {
+            new Domain.Models.Student.Student           {
                 FirstName = "Nelson",
                 LastName = "Doe",
                 DateOfBirth = new DateOnly(2005, 5, 5),

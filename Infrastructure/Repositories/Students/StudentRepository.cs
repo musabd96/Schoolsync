@@ -12,29 +12,29 @@ namespace Infrastructure.Repositories.Students
         {
             _appDbContext = appDbContext;
         }
-        public Task<StudentModel> AddStudent(StudentModel newStudent, CancellationToken cancellationToken)
+        public Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task<StudentModel> DeleteStudent(Guid id, CancellationToken cancellationToken)
+        public Task<Student> DeleteStudent(Guid id, CancellationToken cancellationToken)
         {
-            StudentModel student = _appDbContext.Student.FirstOrDefault(s => s.Id == id)!;
+            Student student = _appDbContext.Student.FirstOrDefault(s => s.Id == id)!;
 
             return Task.FromResult(student);
         }
 
-        public async Task<List<StudentModel>> GetAllStudentsAsync(CancellationToken cancellationToken)
+        public async Task<List<Student>> GetAllStudentsAsync(CancellationToken cancellationToken)
         {
             return await _appDbContext.Student.ToListAsync();
         }
 
-        public async Task<StudentModel> GetStudentById(Guid id, CancellationToken cancellationToken)
+        public async Task<Student> GetStudentById(Guid id, CancellationToken cancellationToken)
         {
             return await _appDbContext.Student.FindAsync(id);
         }
 
-        public Task<StudentModel> UpdateStudent(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Student> UpdateStudent(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

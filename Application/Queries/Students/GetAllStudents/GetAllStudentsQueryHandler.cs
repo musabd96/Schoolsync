@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Queries.Students.GetAllStudents
 {
-    public class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQuery, List<StudentModel>>
+    public class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQuery, List<Student>>
     {
         private readonly IStudentRepository _studentRepository;
 
@@ -13,9 +13,9 @@ namespace Application.Queries.Students.GetAllStudents
             _studentRepository = studentRepository;
         }
 
-        public async Task<List<StudentModel>> Handle(GetAllStudentsQuery request, CancellationToken cancellationToken)
+        public async Task<List<Student>> Handle(GetAllStudentsQuery request, CancellationToken cancellationToken)
         {
-            List<StudentModel> allStudentsFromDatabase = await _studentRepository.GetAllStudentsAsync(cancellationToken);
+            List<Student> allStudentsFromDatabase = await _studentRepository.GetAllStudentsAsync(cancellationToken);
             if (allStudentsFromDatabase == null)
             {
                 throw new InvalidOperationException("No Student was Found");

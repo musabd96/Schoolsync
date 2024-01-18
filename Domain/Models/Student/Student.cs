@@ -2,7 +2,7 @@
 namespace Domain.Models.Student
 
 {
-    public class StudentModel : PersonModel
+    public class Student : PersonModel
     {
 
 

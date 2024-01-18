@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Queries.Students.GetAllStudents
 {
-    public class GetAllStudentsQuery : IRequest<List<StudentModel>>
+    public class GetAllStudentsQuery : IRequest<List<Student>>
     {
     }
 }
