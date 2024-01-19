@@ -1,7 +1,6 @@
-﻿
-using InfraStructure.Repositories.Students;
-using Domain.Models.Student;
+﻿using Domain.Models.Student;
 using MediatR;
+using Infrastructure.Repositories.Students;
 
 namespace Application.Commands.Students.AddStudent
 {
