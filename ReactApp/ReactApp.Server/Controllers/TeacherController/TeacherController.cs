@@ -13,6 +13,7 @@ namespace ReactApp.Server.Controllers.TeacherController
             _mediator = mediator;
         }
 
+        //GetID
         [HttpGet]
         [Route("getTeacherById/{teacherId}")]
         public async Task<IActionResult> GetTeacherById(Guid teacherId)
