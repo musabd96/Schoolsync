@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories.Teachers
         {
             _appDbContext = appDbContext;
         }
-        
+
         public Task<List<Teacher>> GetAllTeacher(CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
