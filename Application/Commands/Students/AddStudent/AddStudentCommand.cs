@@ -10,7 +10,7 @@ namespace Application.Commands.Students.AddStudent
     {
        public AddStudentCommand(StudentDto student)  
         {
-            student = student;
+            Student = student;
         }
         public StudentDto Student { get; set; }
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Queries.Students.GetStudentById;
 using Domain.Models.Student;
 using MediatR;
 
@@ -21,20 +22,20 @@ namespace Application.Commands.Students.AddStudent
             // Skapa en ny student
             var newStudent = new Student
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                DateOfBirth = request.DateOfBirth,
-                Address = request.Address,
-                PhoneNumber = request.PhoneNumber,
-                Email = request.Email
+                Id = Guid.NewGuid(),
+                FirstName = request.Student.FirstName,
+                LastName = request.Student.LastName,
+                DateOfBirth = request.Student.DateOfBirth,
+                Address = request.Student.Address,
+                PhoneNumber = request.Student.PhoneNumber,
+                Email = request.Student.Email
             };
 
-            // Lägg till studenten i kontexten och spara ändringarna i databasen
-            _context.Students.Add(newStudent);
-            await _context.SaveChangesAsync(cancellationToken);
+            await _studentRepository.AddStudent(newStudent, cancellationToken);
 
-            // Returnera studentens ID efter att den har lagts till
-            return newStudent.Id;
+
+
+            return (newStudent);
         }
     }
 }
