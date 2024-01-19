@@ -1,4 +1,4 @@
-
+using Application.Commands.Students.AddStudent;
 using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Students.GetStudentById;
@@ -53,24 +53,23 @@ namespace ReactApp.Server.Controllers.StudentController
             var student = await _mediator.Send(query);
             return student != null ? Ok(student) : NotFound($"No student found with ID: {studentId}");
         }
-    }
-
-    // Add a new Student
-    [HttpPost]
-    [Route("addStudent")]
-    public async Task<IActionResult> AddStudent([FromBody] StudentDto studentDto)
-    {
-        try
+        // Add a new Student
+        [HttpPost]
+        [Route("addStudent")]
+        public async Task<IActionResult> AddStudent([FromBody] StudentDto studentDto)
         {
-            var command = new AddStudentCommand(studentDto);
-            var result = await _mediator.Send(command);
+            try
+            {
+                var command = new AddStudentCommand(studentDto);
+                var result = await _mediator.Send(command);
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
-        catch (Exception ex)
-        {
-            return StatusCode(500, ex.Message);
-        }
+
     }
-
 }
