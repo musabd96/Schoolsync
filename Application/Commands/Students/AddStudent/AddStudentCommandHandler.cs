@@ -7,16 +7,16 @@ using MediatR;
 
 namespace Application.Commands.Students.AddStudent
 {
-    public class AddStudentCommandHandler : IRequestHandler<AddStudentCommand, Guid>
+    public class AddStudentCommandHandler : IRequestHandler<AddStudentCommand, Student>
     {
-        private readonly AppDbContext _context;
+        private readonly IStudentRepository _studentRepository;
 
-        public AddStudentCommandHandler(AppDbContext context)
+        public AddStudentCommandHandler(IStudentRepository studentRepository)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _studentRepository = studentRepository;
         }
 
-        public async Task<Guid> Handle(AddStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Student> Handle(AddStudentCommand request, CancellationToken cancellationToken)
         {
             // Skapa en ny student
             var newStudent = new Student

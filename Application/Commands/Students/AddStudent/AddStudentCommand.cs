@@ -1,16 +1,17 @@
 ﻿
+using Application.Dtos;
+using Domain.Models.Student;
 using MediatR;
 using System;
 
 namespace Application.Commands.Students.AddStudent
 {
-    public class AddStudentCommand : IRequest<Guid>
+    public class AddStudentCommand : IRequest<Student>
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
+       public AddStudentCommand(StudentDto student)  
+        {
+            student = student;
+        }
+        public StudentDto Student { get; set; }
     }
 }
