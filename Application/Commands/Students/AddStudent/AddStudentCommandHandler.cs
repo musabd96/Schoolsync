@@ -1,8 +1,5 @@
 ﻿
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Queries.Students.GetStudentById;
+using InfraStructure.Repositories.Students;
 using Domain.Models.Student;
 using MediatR;
 
