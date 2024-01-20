@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "husky": "^8.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
+  "scripts": {
+    "precommit": "sh node_modules/husky/pre-commit"
+  }
+}
