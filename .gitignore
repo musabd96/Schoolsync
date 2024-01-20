@@ -44,6 +44,11 @@ obj/
 
 # Visual Studio Code directories
 .vscode/
+/Infrastructure/Migrations/
+
+# Ignore appsettings.json in ReactApp.Server
+**/appsettings.json
+
 
 # Windows image file caches
 Thumbs.db
