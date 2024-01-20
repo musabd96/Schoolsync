@@ -26,6 +26,7 @@ _ReSharper*/
 *.ncrunch*
 *.dotSettings.user
 *.sln.docstates
+/ReactApp/ReactApp.Serverappsettings.json
 
 
 # User-specific files
@@ -44,6 +45,8 @@ obj/
 
 # Visual Studio Code directories
 .vscode/
+/Infrastructure/Migrations/
+
 
 # Windows image file caches
 Thumbs.db
