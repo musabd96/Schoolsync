@@ -8,6 +8,6 @@
     }
   },
   "scripts": {
-    "precommit": "sh node_modules/husky/pre-commit"
+    "precommit": "sh .husky/husky/pre-commit"
   }
 }
