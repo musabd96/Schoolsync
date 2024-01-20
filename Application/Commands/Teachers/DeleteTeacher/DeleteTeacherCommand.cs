@@ -5,10 +5,10 @@ namespace Application.Commands.Teachers.DeleteTeacher
 {
     public class DeleteTeacherCommand : IRequest<Teacher>
     {
-        public DeleteTeacherCommand(Guid teacherId) 
+        public DeleteTeacherCommand(Guid teacherId)
         {
             TeacherId = teacherId;
         }
-        public Guid TeacherId { get; set;}
+        public Guid TeacherId { get; set; }
     }
 }

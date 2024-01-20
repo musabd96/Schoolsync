@@ -40,7 +40,7 @@ namespace Infrastructure.Repositories.Teachers
         {
             try
             {
-                var teacherToDelete = _appDbContext.Teacher.FirstOrDefault(t =>t.Id == id);
+                var teacherToDelete = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id);
 
                 _appDbContext.Remove(teacherToDelete!);
                 _appDbContext.SaveChangesAsync().Wait();
