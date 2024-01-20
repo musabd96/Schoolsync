@@ -8,7 +8,7 @@ namespace Application.Commands.Students.AddStudent
 {
     public class AddStudentCommand : IRequest<Student>
     {
-       public AddStudentCommand(StudentDto student)  
+        public AddStudentCommand(StudentDto student)
         {
             Student = student;
         }

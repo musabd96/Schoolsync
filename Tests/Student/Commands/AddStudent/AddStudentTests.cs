@@ -22,9 +22,9 @@ namespace Tests.Student.Commands.AddStudent
         protected void SetupMockDbContext(List<Domain.Models.Student.Student> students)
         {
             _studentRepositoryMock.Setup(repo => repo.AddStudent(It.IsAny<Domain.Models.Student.Student>(), It.IsAny<CancellationToken>()))
-                .Callback((Domain.Models.Student.Student student, 
+                .Callback((Domain.Models.Student.Student student,
                     CancellationToken cancellationToken) => students.Add(student))
-                .Returns((Domain.Models.Student.Student student, 
+                .Returns((Domain.Models.Student.Student student,
                     CancellationToken cancellationToken) => Task.FromResult(student));
         }
 
