@@ -4,6 +4,12 @@
 echo '------PRE-COMMIT HOOK START------'
 echo '------RUNNING PRE COMMIT HOOK------'
 
+# Exclude appsettings.json from being committed
+if git diff --cached --name-only | grep -q 'appsettings.json'; then
+  echo '------appsettings.json is Unstaging it before committing.------'
+  git reset -- 'ReactApp/ReactApp.Server/appsettings.json'
+fi
+
 # Check if the code needs formatting
 if ! dotnet format --verbosity diagnostic --verify-no-changes; then
   echo '------CODE NEEDS FORMATTING. RUNNING DOTNET FORMAT.....------'
