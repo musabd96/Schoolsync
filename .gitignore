@@ -47,7 +47,8 @@ obj/
 /Infrastructure/Migrations/
 
 # Ignore appsettings.json in ReactApp.Server
-# **/appsettings.json
+**/appsettings.json
+
 
 # Windows image file caches
 Thumbs.db
