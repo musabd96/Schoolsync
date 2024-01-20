@@ -38,7 +38,18 @@ namespace Infrastructure.Repositories.Teachers
 
         public Task<Teacher> DeleteTeacher(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var teacherToDelete = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id);
+
+                _appDbContext.Remove(teacherToDelete!);
+                _appDbContext.SaveChangesAsync().Wait();
+                return Task.FromResult(teacherToDelete!);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while deleting a teacher with ID{id} from the database");
+            }
         }
 
     }
