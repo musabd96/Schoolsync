@@ -26,7 +26,6 @@ _ReSharper*/
 *.ncrunch*
 *.dotSettings.user
 *.sln.docstates
-/ReactApp/ReactApp.Server/appsettings.json
 
 
 # User-specific files
@@ -47,6 +46,8 @@ obj/
 .vscode/
 /Infrastructure/Migrations/
 
+# Ignore appsettings.json in ReactApp.Server
+ReactApp/ReactApp.Server/appsettings.json
 
 # Windows image file caches
 Thumbs.db
