@@ -26,7 +26,7 @@ _ReSharper*/
 *.ncrunch*
 *.dotSettings.user
 *.sln.docstates
-/ReactApp/ReactApp.Serverappsettings.json
+/ReactApp/ReactApp.appsettings.json
 
 
 # User-specific files
