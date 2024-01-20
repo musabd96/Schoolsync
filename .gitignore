@@ -44,6 +44,9 @@ obj/
 
 # Visual Studio Code directories
 .vscode/
+/Infrastructure/Migrations/
+
+
 
 # Windows image file caches
 Thumbs.db
@@ -175,3 +178,4 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+/ReactApp/ReactApp.Server/appsettings.json

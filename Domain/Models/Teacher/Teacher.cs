@@ -1,6 +1,8 @@
-﻿namespace Domain.Models.Teacher
+﻿using Domain.Models.Person;
+
+namespace Domain.Models.Teacher
 {
-    public class Teacher
+    public class Teacher : PersonModel
     {
     }
 }
