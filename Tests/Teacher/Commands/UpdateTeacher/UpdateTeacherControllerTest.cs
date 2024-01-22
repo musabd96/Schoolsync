@@ -20,6 +20,7 @@ namespace Tests.Teacher.Commands.UpdateTeacher
             _mediator = Mock.Of<IMediator>();
             _controller = new TeacherController(_mediator);
         }
+
         [Test]
         public async Task UpdateTeacher_ShouldReturnOk()
         {
@@ -39,7 +40,7 @@ namespace Tests.Teacher.Commands.UpdateTeacher
                 .ReturnsAsync(new Domain.Models.Teacher.Teacher());
 
             // Act
-            var result = await _controller.UpdateTeacher(teacherId, command);
+            var result = await _controller.UpdateTeacher(updatedTeacher, teacherId);
 
             // Assert
             Assert.That(result, Is.InstanceOf<OkObjectResult>());
@@ -66,7 +67,7 @@ namespace Tests.Teacher.Commands.UpdateTeacher
                 .Throws(new Exception("Simulated error"));
 
             // Act
-            var result = await _controller.UpdateTeacher(teacherId, command);
+            var result = await _controller.UpdateTeacher(updatedTeacher, teacherId);
 
             // Assert
             Assert.That(result, Is.InstanceOf<ObjectResult>());

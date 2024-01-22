@@ -21,13 +21,23 @@ namespace Tests.Teacher.Commands.UpdateTeacher
 
         protected void SetupMockDbContext(List<Domain.Models.Teacher.Teacher> teachers)
         {
-            _teacherRepository.Setup(repo => repo.UpdateTeacher(It.IsAny<Guid>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))!
-                .ReturnsAsync((Guid id, string firstName, string lastName, string address, string phoneNumber, string email, CancellationToken cancellationToken) =>
+            _teacherRepository.Setup(repo => repo.UpdateTeacher(
+                It.IsAny<Guid>(),
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<DateOnly>(),
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()
+            ))
+            .ReturnsAsync(
+                (Guid id, string firstName, string lastName, DateOnly dateOfBirth, string address, string phoneNumber, string email, CancellationToken cancellationToken) =>
                 {
                     var teacherToUpdate = teachers.FirstOrDefault(t => t.Id == id);
-
-                    return teacherToUpdate;
-                });
+                    return teacherToUpdate!;
+                }
+             );
         }
 
         [Test]

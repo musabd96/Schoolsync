@@ -70,19 +70,19 @@ namespace ReactApp.Server.Controllers.TeacherController
 
         // Update a teacher
         [HttpPut]
-        [Route("updateTeacher/{teacherId}")]
-        public async Task<IActionResult> UpdateTeacher(Guid teacherId, [FromBody] UpdateTeacherCommand updateTeacherCommand)
+        [Route("updateTeacher/{id}")]
+        public async Task<IActionResult> UpdateTeacher([FromBody] TeacherDto updatedTeacher, Guid teacherId)
         {
             try
             {
-                updateTeacherCommand.Id = teacherId;
-                var updatedTeacher = await _mediator.Send(updateTeacherCommand);
-                return updatedTeacher != null ? Ok(updatedTeacher) : NotFound($"No teacher found with ID: {teacherId}");
+                var command = new UpdateTeacherCommand(updatedTeacher, teacherId);
+                var result = await _mediator.Send(command);
+
+                return result != null ? Ok(result) : NotFound($"No teacher found with ID: {teacherId}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Exception in UpdateTeacher: {ex.Message}");
-
                 return StatusCode(500, "Internal Server Error");
             }
         }

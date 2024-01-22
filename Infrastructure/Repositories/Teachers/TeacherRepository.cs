@@ -34,14 +34,14 @@ namespace Infrastructure.Repositories.Teachers
             return newTeacher;
         }
 
-        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateOnly DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
             try
             {
                 Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
 
                 _appDbContext.Update(teacherToUpdate);
-                _appDbContext.SaveChanges();
+                _appDbContext.SaveChangesAsync().Wait();
                 return Task.FromResult(teacherToUpdate)!;
             }
             catch (Exception ex)
