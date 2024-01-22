@@ -34,7 +34,7 @@ namespace ReactApp.Server.Controllers.TeacherController
         }
 
         //Delete a teacher by id
-        [HttpGet]
+        [HttpDelete]
         [Route("deleteTeacherById/{teacherId}")]
         public async Task<IActionResult> DeleteTeacherById(Guid teacherId)
         {
