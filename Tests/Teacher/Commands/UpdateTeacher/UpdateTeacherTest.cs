@@ -59,6 +59,7 @@ namespace Tests.Teacher.Commands.UpdateTeacher
                 {
                     FirstName = "Yoda",
                     LastName = "Master",
+                    DateOfBirth = new DateOnly(896, 2, 11),
                     Address = "Dagobah Swamp, Dagobah System",
                     PhoneNumber = "555-YODA",
                     Email = "yoda.master@jediorder.com"
