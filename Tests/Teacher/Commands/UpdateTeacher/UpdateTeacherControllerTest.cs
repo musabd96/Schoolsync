@@ -28,10 +28,8 @@ namespace Tests.Teacher.Commands.UpdateTeacher
             var teacherId = new Guid("12345678-1234-5678-1234-567812345678");
             var updatedTeacher = new TeacherDto
             {
-                // Set properties as needed
-                FirstName = "John",
-                LastName = "Doe",
-                // Other properties...
+                FirstName = "Johnny",
+                LastName = "Boy",
             };
             var command = new UpdateTeacherCommand(updatedTeacher, teacherId);
 
@@ -54,10 +52,8 @@ namespace Tests.Teacher.Commands.UpdateTeacher
             var teacherId = new Guid("12345678-1234-5678-1234-567812345678");
             var updatedTeacher = new TeacherDto
             {
-                // Set properties as needed
-                FirstName = "John",
-                LastName = "Doe",
-                // Other properties...
+                FirstName = "Joe",
+                LastName = "Over",
             };
             var command = new UpdateTeacherCommand(updatedTeacher, teacherId);
 
