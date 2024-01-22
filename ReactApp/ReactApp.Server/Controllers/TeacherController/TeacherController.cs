@@ -18,7 +18,10 @@ namespace ReactApp.Server.Controllers.TeacherController
         {
             _mediator = mediator;
         }
-
+        //Get all Teachers
+        [HttpGet]
+        [Route("getAllTeachers")]
+        
         public async Task<IActionResult> GetAllTeachers()
         {
             try
