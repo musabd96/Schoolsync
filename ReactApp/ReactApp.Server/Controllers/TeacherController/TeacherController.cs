@@ -1,10 +1,13 @@
-﻿using Application.Queries.Teachers.GetAllTeachers;
+﻿using Application.Commands.Teachers.AddTeacher;
+using Application.Queries.Teachers.GetAllTeachers;
 using Application.Commands.Teachers.DeleteTeacher;
 using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Teachers.GetTeacherById;
 using Domain.Models.Teacher;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Application.Commands.Students.AddStudent;
+using Application.Dtos;
 
 namespace ReactApp.Server.Controllers.TeacherController
 {
@@ -82,6 +85,23 @@ namespace ReactApp.Server.Controllers.TeacherController
                 Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
 
                 return StatusCode(500, "Internal Server Error");
+            }
+        }
+        // Add a new Teacher
+        [HttpPost]
+        [Route("addTeacher")]
+        public async Task<IActionResult> AddTeacher([FromBody] TeacherDto teacherDto)
+        {
+            try
+            {
+                var command = new AddTeacherCommand(teacherDto);
+                var result = await _mediator.Send(command);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
     }

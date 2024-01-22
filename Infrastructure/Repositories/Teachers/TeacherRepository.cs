@@ -1,5 +1,6 @@
 ﻿
 
+using Domain.Models.Student;
 using Domain.Models.Teacher;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
@@ -27,10 +28,13 @@ namespace Infrastructure.Repositories.Teachers
 
             return Task.FromResult(teacher);
         }
-        public Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
+        public async Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            // Lägg till den nya läraren i DbSet och spara ändringarna i databasen
+            _appDbContext.Teacher.Add(newTeacher);
+            await _appDbContext.SaveChangesAsync(cancellationToken);
 
+            return newTeacher;
         }
 
         public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
