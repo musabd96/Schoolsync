@@ -37,9 +37,20 @@ namespace Infrastructure.Repositories.Teachers
             return newTeacher;
         }
 
-        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
+
+                _appDbContext.Update(teacherToUpdate);
+                _appDbContext.SaveChanges();
+                return Task.FromResult(teacherToUpdate)!;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while updating a teacher with ID {id} in the database", ex);
+            }
         }
 
         public Task<Teacher> DeleteTeacher(Guid id, CancellationToken cancellationToken)
