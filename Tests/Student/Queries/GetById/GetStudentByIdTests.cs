@@ -19,7 +19,7 @@ namespace Tests.Student.Queries.GetStudentById
 			_studentRepositoryMock.Setup(repo => repo.GetStudentById(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
 				.ReturnsAsync(new Domain.Models.Student.Student
 				{
-					Id = new Guid("376ba7ab-47ee-4260-90c6-49c469e079y1"),
+					Id = new Guid("376ba7ab-47ee-4260-90c6-49c469e078f0"),
 					FirstName = "Nour",
 					LastName = "Solaiman",
 					DateOfBirth = new DateOnly(1984, 1, 15),
@@ -33,7 +33,7 @@ namespace Tests.Student.Queries.GetStudentById
 		{
 			// Arrange
 			Setup();
-			var studentId = new Guid("376ba7ab-47ee-4260-90c6-49c469e079y1");
+			var studentId = new Guid("376ba7ab-47ee-4260-90c6-49c469e078f0");
 
 			var query = new GetStudentByIdQuery(studentId);
 
