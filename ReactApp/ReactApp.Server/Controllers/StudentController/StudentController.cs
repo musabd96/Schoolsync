@@ -1,4 +1,5 @@
 using Application.Commands.Students.AddStudent;
+using Application.Commands.Students.DeleteStudent;
 using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Students.GetStudentById;
@@ -70,6 +71,25 @@ namespace ReactApp.Server.Controllers.StudentController
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult>DeleteStudent(Guid id)
+        {
+            var student = await _mediator.Send(new DeleteStudentCommand(id));
+            if(student != null)
+            {
+                return NoContent();
+            }
+            return NotFound();
+        }
+
+
+
+
+
+
+
+
 
     }
 }

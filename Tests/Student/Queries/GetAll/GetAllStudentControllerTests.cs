@@ -35,7 +35,7 @@ namespace Tests.Student.Queries.GetAll
                 FirstName = "Per",
                 LastName = "Andersson",
                 DateOfBirth = new DateOnly(2003, 5, 12),
-                Address = "Kungsgatan 123, Göteborg",
+                Adress = "Kungsgatan 123, Göteborg",
                 PhoneNumber = "+46 70 123 45 67",
                 Email = "elsa.andersson@schoolsync.com"
             },
@@ -43,7 +43,7 @@ namespace Tests.Student.Queries.GetAll
                 FirstName = "Nelson",
                 LastName = "Doe",
                 DateOfBirth = new DateOnly(2005, 5, 5),
-                Address = "Magasinsgatan 1414, Mölndal",
+                Adress = "Magasinsgatan 1414, Mölndal",
                 PhoneNumber = "+46 76 789 01 23",
                 Email = "nelson.doe@schoolsync.com"
             }
