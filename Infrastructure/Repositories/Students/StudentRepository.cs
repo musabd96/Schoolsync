@@ -12,9 +12,13 @@ namespace Infrastructure.Repositories.Students
         {
             _appDbContext = appDbContext;
         }
-        public Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken)
+        public async Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            // Lägg till den nya studenten i DbSet och spara ändringarna i databasen
+            _appDbContext.Student.Add(newStudent);
+            await _appDbContext.SaveChangesAsync(cancellationToken);
+
+            return newStudent;
         }
 
         public Task<Student> DeleteStudent(Guid id, CancellationToken cancellationToken)

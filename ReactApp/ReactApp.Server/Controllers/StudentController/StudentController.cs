@@ -1,3 +1,5 @@
+using Application.Commands.Students.AddStudent;
+using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Students.GetStudentById;
 using Domain.Models.Student;
@@ -23,40 +25,49 @@ namespace ReactApp.Server.Controllers.StudentController
 				var query = new GetAllStudentsQuery();
 				var result = await _mediator.Send(query);
 
-				// Check if the result is a valid list of students
-				if (result is List<Student> students && students.Any())
-				{
-					// Return OkObjectResult with the list of students
-					return Ok(students);
-				}
-				else
-				{
-					// Return OkResult with an empty result or handle accordingly
-					return Ok();
-				}
-			}
-			catch (Exception ex)
-			{
-				return StatusCode(500, ex.Message);
-			}
-		}
-		// Get Student By Id
-		[HttpGet]
-		[Route("getStudentById/{studentId}")]
-		public async Task<IActionResult> GetStudentById(Guid studentId)
-		{			
-			try
-			{
-				var query = new GetStudentByIdQuery(studentId);
-				var student = await _mediator.Send(query);
-				return student != null ? Ok(student) : NotFound($"No student found with ID: {studentId}");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
+                // Check if the result is a valid list of students
+                if (result is List<Student> students && students.Any())
+                {
+                    // Return OkObjectResult with the list of students
+                    return Ok(students);
+                }
+                else
+                {
+                    // Return OkResult with an empty result or handle accordingly
+                    return Ok();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        // Get Student By Id
+        [HttpGet]
+        [Route("getStudentById/{studentId}")]
+        public async Task<IActionResult> GetStudentById(Guid studentId)
+        {
+            var query = new GetStudentByIdQuery(studentId);
+            var student = await _mediator.Send(query);
+            return student != null ? Ok(student) : NotFound($"No student found with ID: {studentId}");
+        }
+        // Add a new Student
+        [HttpPost]
+        [Route("addStudent")]
+        public async Task<IActionResult> AddStudent([FromBody] StudentDto studentDto)
+        {
+            try
+            {
+                var command = new AddStudentCommand(studentDto);
+                var result = await _mediator.Send(command);
 
-				return StatusCode(500, "Internal Server Error");
-			}
-		}
-	}
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+    }
 }

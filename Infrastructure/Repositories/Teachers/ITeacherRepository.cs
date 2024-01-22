@@ -1,12 +1,13 @@
 ﻿
 
+using Domain.Models.Student;
 using Domain.Models.Teacher;
 
 namespace Infrastructure.Repositories.Teachers
 {
     public interface ITeacherRepository
     {
-        Task<List<Teacher>> GetAllTeacher(CancellationToken cancellationToken);
+        Task<List<Teacher>> GetAllTeachers(CancellationToken cancellationToken);
         Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken);
         Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken);
         Task<Teacher> UpdateTeacher(Guid id, string FirstName,
