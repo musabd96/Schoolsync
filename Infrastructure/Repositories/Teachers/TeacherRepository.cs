@@ -2,6 +2,7 @@
 
 using Domain.Models.Teacher;
 using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.Teachers
 {
@@ -14,10 +15,11 @@ namespace Infrastructure.Repositories.Teachers
             _appDbContext = appDbContext;
         }
 
-        public Task<List<Teacher>> GetAllTeacher(CancellationToken cancellationToken)
+        public async Task<List<Teacher>> GetAllTeachers(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.Teacher.ToListAsync(cancellationToken);
         }
+
 
         public Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken)
         {

@@ -1,11 +1,9 @@
-﻿
-using Application.Dtos;
+﻿using Domain.Models.Teacher;
 using MediatR;
 
 namespace Application.Queries.Teachers.GetAllTeachers
 {
-    public class GetAllTeachersQuery : IRequest<List<TeacherDto>>
+    public class GetAllTeachersQuery : IRequest<List<Teacher>>
     {
-        
     }
 }
