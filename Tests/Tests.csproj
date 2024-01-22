@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Teacher\Commands\" />
-    <Folder Include="Teacher\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
