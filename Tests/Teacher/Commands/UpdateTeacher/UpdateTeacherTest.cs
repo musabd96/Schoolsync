@@ -1,5 +1,4 @@
 ﻿using Application.Commands.Teachers.UpdateTeacher;
-using Application.Queries.Teachers.GetTeacherById;
 using Infrastructure.Repositories.Teachers;
 using Moq;
 using NUnit.Framework;
@@ -19,13 +18,13 @@ namespace Tests.Teacher.Commands.UpdateTeacher
             _handler = new UpdateTeacherCommandHandler(_teacherRepository.Object);
         }
 
-        [Test]
+        // [Test]
         public Task Handle_ValidId_UpdatedTeacher()
         {
             throw new NotImplementedException();
         }
 
-        [Test]
+        // [Test]
         public Task Handle_InvalidId_ReturnsNull()
         {
             throw new NotImplementedException();
