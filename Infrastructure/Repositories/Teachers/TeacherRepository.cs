@@ -1,6 +1,4 @@
-﻿
-
-using Domain.Models.Teacher;
+﻿using Domain.Models.Teacher;
 using Infrastructure.Database;
 
 namespace Infrastructure.Repositories.Teachers
@@ -38,12 +36,8 @@ namespace Infrastructure.Repositories.Teachers
             {
                 Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
 
-                // Update the teacher's properties with the new values
                 _appDbContext.Update(teacherToUpdate);
-
-                // Save changes to the database
                 _appDbContext.SaveChanges();
-
                 return Task.FromResult(teacherToUpdate)!;
             }
             catch (Exception ex)
