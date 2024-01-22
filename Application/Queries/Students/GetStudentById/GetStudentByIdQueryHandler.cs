@@ -6,9 +6,13 @@ namespace Application.Queries.Students.GetStudentById
 {
     public class GetStudentByIdQueryHandler
     {
-        public class GetStudenByIdQueryHandler(IStudentRepository? studentRepository) : IRequestHandler<GetStudentByIdQuery, Student>
+        public class GetStudenByIdQueryHandler : IRequestHandler<GetStudentByIdQuery, Student>
         {
-            private readonly IStudentRepository? _studentRepository = studentRepository;
+            private readonly IStudentRepository _studentRepository;
+            public GetStudenByIdQueryHandler(IStudentRepository studentRepository)
+            {
+                _studentRepository = studentRepository;
+            }
 
             public async Task<Student> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
             {

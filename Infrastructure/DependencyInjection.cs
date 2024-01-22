@@ -16,7 +16,7 @@ namespace Infrastructure
             services.AddDbContext<AppDbContext>(options =>
             {
                 //connectionString to Db
-                var connectionString = "Server=localhost;Port=3306;Database=API_Animals;User=root;Password=mustafa0909;";
+                var connectionString = "Server=localhost;Port=3306;Database=API_Animals;User=root;Password=Mns@19741111;";
 
                 options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 35)));
             });
