@@ -7,6 +7,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 namespace ReactApp.Server.Controllers.StudentController
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class StudentController : Controller
     {
 
