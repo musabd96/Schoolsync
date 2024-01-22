@@ -13,7 +13,6 @@ namespace Tests.Teacher.Commands.UpdateTeacher
     {
         private IMediator _mediator;
         private TeacherController _controller;
-        private TeacherDto? updatedTeacherDto;
 
         [SetUp]
         public void Setup()
@@ -26,7 +25,14 @@ namespace Tests.Teacher.Commands.UpdateTeacher
         {
             // Arrange 
             var teacherId = new Guid("12345678-1234-5678-1234-567812345678");
-            var command = new UpdateTeacherCommand(updatedTeacherDto!, teacherId);
+            var updatedTeacher = new TeacherDto
+            {
+                // Set properties as needed
+                FirstName = "John",
+                LastName = "Doe",
+                // Other properties...
+            };
+            var command = new UpdateTeacherCommand(updatedTeacher, teacherId);
 
             Mock.Get(_mediator)
                 .Setup(x => x.Send(It.IsAny<UpdateTeacherCommand>(), It.IsAny<CancellationToken>()))
@@ -44,8 +50,15 @@ namespace Tests.Teacher.Commands.UpdateTeacher
         public async Task UpdateTeacher_ShouldReturnInternalServerErrorOnException()
         {
             // Arrange 
-            var teacherId = Guid.NewGuid();
-            var command = new UpdateTeacherCommand(updatedTeacherDto!, teacherId);
+            var teacherId = new Guid("12345678-1234-5678-1234-567812345678");
+            var updatedTeacher = new TeacherDto
+            {
+                // Set properties as needed
+                FirstName = "John",
+                LastName = "Doe",
+                // Other properties...
+            };
+            var command = new UpdateTeacherCommand(updatedTeacher, teacherId);
 
             // Arrange
             Mock.Get(_mediator)
