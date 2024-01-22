@@ -27,9 +27,9 @@ namespace Tests.Teacher.Commands.DeleteTeacher
         protected void SetupMockDbContext(List<Domain.Models.Teacher.Teacher> teacher)
         {
             _teacherRepository.Setup(repo => repo.DeleteTeacher(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
-                .Returns((Guid catId, CancellationToken cancellationToken) =>
+                .Returns((Guid teacherId, CancellationToken cancellationToken) =>
                 {
-                    var birdToDelete = teacher.FirstOrDefault(bird => bird.Id == catId);
+                    var teacherToDelete = teacher.FirstOrDefault(t => t.Id == teacherId);
 
                     return Task.FromResult<Domain.Models.Teacher.Teacher>(null!);
                 });
