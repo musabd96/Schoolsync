@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Application.Commands.Students.AddStudent;
+using Application.Commands.Teachers.AddTeacher; 
 using Application.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using ReactApp.Server.Controllers.StudentController;
+using ReactApp.Server.Controllers.TeacherController;
 
-namespace Tests.Student.Controllers
+namespace Tests.Teacher.Controllers
 {
     [TestFixture]
-    public class AddStudentControllerTests
+    public class AddTeacherControllerTests
     {
-        private StudentController _controller;
+        private TeacherController _controller;
         private IMediator _mediator;
 
         [SetUp]
@@ -22,14 +22,14 @@ namespace Tests.Student.Controllers
             // Initialize or mock IMediator implementation (dependency injection)
             _mediator = Mock.Of<IMediator>();
 
-            _controller = new StudentController(_mediator);
+            _controller = new TeacherController(_mediator);
         }
 
         [Test]
-        public async Task AddStudent_ValidInput_ReturnsOkResult()
+        public async Task AddTeacher_ValidInput_ReturnsOkResult()
         {
             // Arrange
-            var newStudent = new StudentDto
+            var newTeacher = new TeacherDto
             {
                 FirstName = "John",
                 LastName = "Doe",
@@ -41,11 +41,11 @@ namespace Tests.Student.Controllers
 
             // Mock the Send method of IMediator to return the expected result
             Mock.Get(_mediator)
-                .Setup(x => x.Send(It.IsAny<AddStudentCommand>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new Domain.Models.Student.Student());
+                .Setup(x => x.Send(It.IsAny<AddTeacherCommand>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new Domain.Models.Teacher.Teacher());
 
             // Act
-            var result = await _controller.AddStudent(newStudent);
+            var result = await _controller.AddTeacher(newTeacher);
 
             // Assert
             Assert.That(result, Is.InstanceOf<OkObjectResult>());
