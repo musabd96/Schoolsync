@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Commands.Teachers.UpdateTeacher
 {
-    public class UpdateTeacherCommandHandler : IRequestHandler<UpdateTeacherCommand, Teacher> //
+    public class UpdateTeacherCommandHandler : IRequestHandler<UpdateTeacherCommand, Teacher>
     {
         private readonly ITeacherRepository _teacherRepository;
 
