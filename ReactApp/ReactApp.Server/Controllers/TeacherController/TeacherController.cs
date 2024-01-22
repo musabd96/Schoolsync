@@ -21,7 +21,7 @@ namespace ReactApp.Server.Controllers.TeacherController
         //Get all Teachers
         [HttpGet]
         [Route("getAllTeachers")]
-        
+
         public async Task<IActionResult> GetAllTeachers()
         {
             try

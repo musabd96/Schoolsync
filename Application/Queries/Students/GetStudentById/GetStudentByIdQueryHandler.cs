@@ -4,28 +4,29 @@ using MediatR;
 
 namespace Application.Queries.Students.GetStudentById
 {
-    public class GetStudentByIdQueryHandler
+    public class GetStudentByIdQueryHandler : IRequestHandler<GetStudentByIdQuery, Student>
     {
-        public class GetStudenByIdQueryHandler(IStudentRepository? studentRepository) : IRequestHandler<GetStudentByIdQuery, Student>
+        private readonly IStudentRepository _studentRepository;
+        public GetStudentByIdQueryHandler(IStudentRepository studentRepository)
         {
-            private readonly IStudentRepository? _studentRepository = studentRepository;
+            _studentRepository = studentRepository;
+        }
 
-            public async Task<Student> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Student> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
+        {
+            Student wantedStudent = await _studentRepository.GetStudentById(request.Id, cancellationToken);
+
+            try
             {
-                Student wantedStudent = await _studentRepository.GetStudentById(request.Id, cancellationToken);
-
-                try
+                if (wantedStudent == null)
                 {
-                    if (wantedStudent == null)
-                    {
-                        return null!;
-                    }
-                    return wantedStudent;
+                    return null!;
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+                return wantedStudent;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }

@@ -44,15 +44,26 @@ namespace ReactApp.Server.Controllers.StudentController
                 return StatusCode(500, ex.Message);
             }
         }
+
         // Get Student By Id
         [HttpGet]
         [Route("getStudentById/{studentId}")]
         public async Task<IActionResult> GetStudentById(Guid studentId)
         {
-            var query = new GetStudentByIdQuery(studentId);
-            var student = await _mediator.Send(query);
-            return student != null ? Ok(student) : NotFound($"No student found with ID: {studentId}");
+            try
+            {
+                var query = new GetStudentByIdQuery(studentId);
+                var student = await _mediator.Send(query);
+                return student != null ? Ok(student) : NotFound($"No student found with ID: {studentId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
+            }
         }
+
         // Add a new Student
         [HttpPost]
         [Route("addStudent")]
