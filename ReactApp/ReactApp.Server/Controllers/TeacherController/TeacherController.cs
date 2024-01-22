@@ -1,12 +1,10 @@
 ﻿using Application.Commands.Teachers.AddTeacher;
 using Application.Queries.Teachers.GetAllTeachers;
 using Application.Commands.Teachers.DeleteTeacher;
-using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Teachers.GetTeacherById;
 using Domain.Models.Teacher;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Application.Commands.Students.AddStudent;
 using Application.Dtos;
 using Application.Commands.Teachers.UpdateTeacher;
 

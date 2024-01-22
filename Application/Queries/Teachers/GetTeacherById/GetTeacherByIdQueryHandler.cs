@@ -1,5 +1,4 @@
 ﻿using Domain.Models.Teacher;
-using Infrastructure.Repositories.Students;
 using Infrastructure.Repositories.Teachers;
 using MediatR;
 

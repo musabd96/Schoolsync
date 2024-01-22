@@ -1,7 +1,4 @@
-﻿
-
-using Domain.Models.Student;
-using Domain.Models.Teacher;
+﻿using Domain.Models.Teacher;
 
 namespace Infrastructure.Repositories.Teachers
 {
