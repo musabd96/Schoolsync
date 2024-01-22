@@ -62,7 +62,7 @@ namespace Infrastructure.Repositories.Teachers
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error occurred while deleting a teacher with ID{id} from the database");
+                throw new Exception($"An error occurred while deleting a teacher with ID{id} from the database", ex);
             }
         }
 
