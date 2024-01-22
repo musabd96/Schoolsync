@@ -6,7 +6,6 @@ namespace Infrastructure.Repositories.Teachers
 {
     public class TeacherRepository : ITeacherRepository
     {
-
         private readonly AppDbContext _appDbContext;
         public TeacherRepository(AppDbContext appDbContext)
         {
@@ -41,7 +40,7 @@ namespace Infrastructure.Repositories.Teachers
                 Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
 
                 _appDbContext.Update(teacherToUpdate);
-                _appDbContext.SaveChangesAsync().Wait();
+                _appDbContext.SaveChangesAsync(cancellationToken);
                 return Task.FromResult(teacherToUpdate)!;
             }
             catch (Exception ex)
@@ -57,7 +56,7 @@ namespace Infrastructure.Repositories.Teachers
                 var teacherToDelete = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id);
 
                 _appDbContext.Remove(teacherToDelete!);
-                _appDbContext.SaveChangesAsync().Wait();
+                _appDbContext.SaveChangesAsync(cancellationToken);
                 return Task.FromResult(teacherToDelete!);
             }
             catch (Exception ex)

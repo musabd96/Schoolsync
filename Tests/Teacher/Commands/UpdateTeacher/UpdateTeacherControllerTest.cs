@@ -41,8 +41,11 @@ namespace Tests.Teacher.Commands.UpdateTeacher
             var result = await _controller.UpdateTeacher(updatedTeacher, teacherId);
 
             // Assert
-            Assert.That(result, Is.InstanceOf<OkObjectResult>());
-            Assert.That((result as OkObjectResult)?.StatusCode, Is.EqualTo(200));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.InstanceOf<OkObjectResult>());
+                Assert.That((result as OkObjectResult)?.StatusCode, Is.EqualTo(200));
+            });
         }
 
         [Test]
@@ -66,8 +69,11 @@ namespace Tests.Teacher.Commands.UpdateTeacher
             var result = await _controller.UpdateTeacher(updatedTeacher, teacherId);
 
             // Assert
-            Assert.That(result, Is.InstanceOf<ObjectResult>());
-            Assert.That((result as ObjectResult)?.StatusCode, Is.EqualTo(500));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.InstanceOf<ObjectResult>());
+                Assert.That((result as ObjectResult)?.StatusCode, Is.EqualTo(500));
+            });
         }
     }
 }

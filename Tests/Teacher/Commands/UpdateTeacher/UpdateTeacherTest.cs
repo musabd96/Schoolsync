@@ -45,7 +45,7 @@ namespace Tests.Teacher.Commands.UpdateTeacher
         {
             // Arrange
             var teacherId = new Guid("12345678-1234-5678-1234-567812345678");
-            var teachers = new List<Domain.Models.Teacher.Teacher> { new Domain.Models.Teacher.Teacher { Id = teacherId } };
+            var teachers = new List<Domain.Models.Teacher.Teacher> { new() { Id = teacherId } };
             SetupMockDbContext(teachers);
 
             var command = new UpdateTeacherCommand(
@@ -65,7 +65,7 @@ namespace Tests.Teacher.Commands.UpdateTeacher
             var result = await _handler.Handle(command, CancellationToken.None);
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Assert.That(result.Id, Is.EqualTo(teacherId));
         }
 
@@ -81,9 +81,9 @@ namespace Tests.Teacher.Commands.UpdateTeacher
 
             // ACt
             var result = await _handler.Handle(command, CancellationToken.None);
-            
+
             // Assert
-            Assert.IsNull(result);
+            Assert.That(result, Is.Null);
         }
     }
 }

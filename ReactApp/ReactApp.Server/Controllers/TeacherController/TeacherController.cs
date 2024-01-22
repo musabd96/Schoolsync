@@ -70,7 +70,7 @@ namespace ReactApp.Server.Controllers.TeacherController
 
         // Update a teacher
         [HttpPut]
-        [Route("updateTeacher/{id}")]
+        [Route("updateTeacher/{teacherId}")]
         public async Task<IActionResult> UpdateTeacher([FromBody] TeacherDto updatedTeacher, Guid teacherId)
         {
             try
