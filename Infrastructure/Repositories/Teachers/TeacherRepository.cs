@@ -25,15 +25,31 @@ namespace Infrastructure.Repositories.Teachers
 
             return Task.FromResult(teacher);
         }
+
         public Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
 
         }
 
-        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
+
+                // Update the teacher's properties with the new values
+                _appDbContext.Update(teacherToUpdate);
+
+                // Save changes to the database
+                _appDbContext.SaveChanges();
+
+                return Task.FromResult(teacherToUpdate)!;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while updating a teacher with ID {id} in the database", ex);
+            }
         }
 
         public Task<Teacher> DeleteTeacher(Guid id, CancellationToken cancellationToken)
@@ -48,7 +64,7 @@ namespace Infrastructure.Repositories.Teachers
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error occurred while deleting a teacher with ID{id} from the database");
+                throw new Exception($"An error occurred while deleting a teacher with ID{id} from the database", ex);
             }
         }
 
