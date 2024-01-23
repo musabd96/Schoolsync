@@ -39,7 +39,17 @@ namespace Infrastructure.Repositories.Teachers
             {
                 Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
 
-                _appDbContext.Update(teacherToUpdate);
+                if(teacherToUpdate != null)
+                {
+                    teacherToUpdate.FirstName = FirstName;
+                    teacherToUpdate.LastName = LastName;
+                    teacherToUpdate.DateOfBirth = DateOfBirth;
+                    teacherToUpdate.Address = Address;
+                    teacherToUpdate.PhoneNumber = PhoneNumber;
+                    teacherToUpdate.Email = Email;
+                }
+
+                _appDbContext.Update(teacherToUpdate!);
                 _appDbContext.SaveChangesAsync(cancellationToken);
                 return Task.FromResult(teacherToUpdate)!;
             }
