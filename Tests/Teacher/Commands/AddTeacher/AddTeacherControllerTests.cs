@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Application.Commands.Teachers.AddTeacher; 
+using Application.Commands.Teachers.AddTeacher;
 using Application.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

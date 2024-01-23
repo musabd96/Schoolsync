@@ -1,13 +1,12 @@
 ﻿using Application.Commands.Teachers.AddTeacher;
 using Application.Queries.Teachers.GetAllTeachers;
 using Application.Commands.Teachers.DeleteTeacher;
-using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Teachers.GetTeacherById;
 using Domain.Models.Teacher;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Application.Commands.Students.AddStudent;
 using Application.Dtos;
+using Application.Commands.Teachers.UpdateTeacher;
 
 namespace ReactApp.Server.Controllers.TeacherController
 {
@@ -65,6 +64,25 @@ namespace ReactApp.Server.Controllers.TeacherController
             {
                 Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
 
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        // Update a teacher
+        [HttpPut]
+        [Route("updateTeacher/{teacherId}")]
+        public async Task<IActionResult> UpdateTeacher([FromBody] TeacherDto updatedTeacher, Guid teacherId)
+        {
+            try
+            {
+                var command = new UpdateTeacherCommand(updatedTeacher, teacherId);
+                var result = await _mediator.Send(command);
+
+                return result != null ? Ok(result) : NotFound($"No teacher found with ID: {teacherId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in UpdateTeacher: {ex.Message}");
                 return StatusCode(500, "Internal Server Error");
             }
         }

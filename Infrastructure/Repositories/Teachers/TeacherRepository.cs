@@ -1,7 +1,4 @@
-﻿
-
-using Domain.Models.Student;
-using Domain.Models.Teacher;
+﻿using Domain.Models.Teacher;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +6,6 @@ namespace Infrastructure.Repositories.Teachers
 {
     public class TeacherRepository : ITeacherRepository
     {
-
         private readonly AppDbContext _appDbContext;
         public TeacherRepository(AppDbContext appDbContext)
         {
@@ -37,9 +33,30 @@ namespace Infrastructure.Repositories.Teachers
             return newTeacher;
         }
 
-        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateOnly DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
+
+                if(teacherToUpdate != null)
+                {
+                    teacherToUpdate.FirstName = FirstName;
+                    teacherToUpdate.LastName = LastName;
+                    teacherToUpdate.DateOfBirth = DateOfBirth;
+                    teacherToUpdate.Address = Address;
+                    teacherToUpdate.PhoneNumber = PhoneNumber;
+                    teacherToUpdate.Email = Email;
+                }
+
+                _appDbContext.Update(teacherToUpdate!);
+                _appDbContext.SaveChangesAsync(cancellationToken);
+                return Task.FromResult(teacherToUpdate)!;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while updating a teacher with ID {id} in the database", ex);
+            }
         }
 
         public Task<Teacher> DeleteTeacher(Guid id, CancellationToken cancellationToken)
@@ -49,12 +66,12 @@ namespace Infrastructure.Repositories.Teachers
                 var teacherToDelete = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id);
 
                 _appDbContext.Remove(teacherToDelete!);
-                _appDbContext.SaveChangesAsync().Wait();
+                _appDbContext.SaveChangesAsync(cancellationToken);
                 return Task.FromResult(teacherToDelete!);
             }
             catch (Exception ex)
             {
-                throw new Exception($"An error occurred while deleting a teacher with ID{id} from the database");
+                throw new Exception($"An error occurred while deleting a teacher with ID{id} from the database", ex);
             }
         }
 
