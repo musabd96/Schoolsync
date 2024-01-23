@@ -9,6 +9,6 @@ namespace Application.Queries.Users.Login
         {
             LoginUser = loginUser;
         }
-        public UserDto LoginUser { get; set;}
+        public UserDto LoginUser { get; set; }
     }
 }

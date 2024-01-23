@@ -7,7 +7,7 @@ namespace Application.Commands.Register
     {
         public Task<User> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // koda koda
         }
     }
 }

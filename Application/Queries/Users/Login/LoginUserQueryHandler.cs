@@ -8,7 +8,7 @@ namespace Application.Queries.Users.Login
 
         public Task<string> Handle(LoginUserQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // koda koda
         }
     }
 }

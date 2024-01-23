@@ -39,7 +39,7 @@ namespace Infrastructure.Repositories.Teachers
             {
                 Teacher teacherToUpdate = _appDbContext.Teacher.FirstOrDefault(x => x.Id == id)!;
 
-                if(teacherToUpdate != null)
+                if (teacherToUpdate != null)
                 {
                     teacherToUpdate.FirstName = FirstName;
                     teacherToUpdate.LastName = LastName;
