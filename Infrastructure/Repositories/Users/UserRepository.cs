@@ -12,9 +12,23 @@ namespace Infrastructure.Repositories.Users
             _appDbContext = appDbContext;
         }
 
-        public Task<User> RegisterUser(User userToCreate)
+        public async Task<User> RegisterUser(User userToRegister)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (string.IsNullOrEmpty(userToRegister.Username) || string.IsNullOrEmpty(userToRegister.Password))
+                {
+                    throw new ArgumentException("Username or password cannot be empty.");
+                }
+
+                _appDbContext.Users.Add(userToRegister);
+                _appDbContext.SaveChanges();
+                return await Task.FromResult(userToRegister);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
