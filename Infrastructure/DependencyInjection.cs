@@ -16,7 +16,7 @@ namespace Infrastructure
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 35)));
+                options.UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 34)));
             });
             return services;
         }

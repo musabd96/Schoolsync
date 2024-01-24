@@ -17,7 +17,7 @@ namespace Infrastructure.Database
 
             // Create options
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 35)));
+            optionsBuilder.UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 34)));
 
             return new AppDbContext(optionsBuilder.Options);
         }
