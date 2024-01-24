@@ -3,6 +3,6 @@
     public class ClassRoomDto
     {
         public required string ClassRoomName { get; set; }
-        
+
     }
 }
