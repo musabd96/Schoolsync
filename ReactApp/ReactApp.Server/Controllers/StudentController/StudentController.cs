@@ -1,10 +1,12 @@
 using Application.Commands.Students.AddStudent;
+using Application.Commands.Students.UpdateStudent;
 using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Students.GetStudentById;
 using Domain.Models.Student;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 namespace ReactApp.Server.Controllers.StudentController
 {
     [Route("api/[controller]")]
@@ -80,6 +82,25 @@ namespace ReactApp.Server.Controllers.StudentController
             {
                 return StatusCode(500, ex.Message);
             }
+        }
+
+        // Update Student
+        [HttpPut]
+        [Route("updateStudent")]
+        public async Task<IActionResult> UpdateStudent([FromBody] StudentDto updatedStudent, Guid updateStudent)
+        {
+            try
+            {
+                var command = new UpdateStudentCommand(updatedStudent, updateStudent);
+                var result = await _mediator.Send(command);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
         }
 
     }
