@@ -30,10 +30,6 @@ namespace ReactApp.Server.Controllers.UserController
             {
                 return BadRequest(ex.Message);
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
         }
     }
 }
