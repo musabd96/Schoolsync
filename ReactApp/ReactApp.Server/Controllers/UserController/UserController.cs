@@ -22,7 +22,9 @@ namespace ReactApp.Server.Controllers.UserController
         {
             try
             {
-                return Ok(await _mediator.Send(new RegisterUserCommand(userToRegister)));
+                var createdUser = await _mediator.Send(new RegisterUserCommand(userToRegister));
+
+                return CreatedAtAction(nameof(Register), createdUser);
             }
             catch (ArgumentException ex)
             {

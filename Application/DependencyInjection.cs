@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Infrastructure.Repositories.Users;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application
@@ -12,7 +11,6 @@ namespace Application
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(assembly));
 
             services.AddValidatorsFromAssembly(assembly);
-            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

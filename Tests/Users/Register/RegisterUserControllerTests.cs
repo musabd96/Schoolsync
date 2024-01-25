@@ -20,22 +20,22 @@ namespace Tests.Users.Register
             _mediator = Mock.Of<IMediator>();
             _controller = new UserController(_mediator);
         }
-        //[Test]
-        //public async Task UserRegister_ShouldReturnSuccesfulRegistration()
-        //{
-        //    // Arrange
-        //    var userDto = new UserDto { Username = "Tarzan", Password = "Coconut" };
-        //    Mock.Get(_mediator).Setup(mock => mock.Send(It.IsAny<RegisterUserCommand>(), CancellationToken.None))
-        //                 .ReturnsAsync(new User { Id = Guid.NewGuid(), Username = "TestUser", Password = "Coconut" });
+        [Test]
+        public async Task UserRegister_ShouldReturnSuccesfulRegistration()
+        {
+            // Arrange
+            var userDto = new UserDto { Username = "Tarzan", Password = "Coconut" };
+            Mock.Get(_mediator).Setup(mock => mock.Send(It.IsAny<RegisterUserCommand>(), CancellationToken.None))
+                             .ReturnsAsync(new User { Id = Guid.NewGuid(), Username = "TestUser", Password = "Coconut" });
 
-        //    // Act
-        //    var result = await _controller.Register(userDto) as ObjectResult;
+            // Act
+            var result = await _controller.Register(userDto) as CreatedAtActionResult;
 
-        //    // Assert
-        //    Assert.That(result, Is.Not.Null);
-        //    Assert.That(result, Is.InstanceOf<OkObjectResult>());
-        //    Assert.That(result.StatusCode, Is.EqualTo(201));
-        //} //   Message: Expected: 201 But was:  200
+            // Assert
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.StatusCode, Is.EqualTo(201));
+            Assert.That(result.ActionName, Is.EqualTo(nameof(Register)));
+        }
 
         [Test]
         public async Task Register_InvalidUser_ReturnsBadRequest()
