@@ -13,21 +13,28 @@ namespace Application.Commands.Register
         }
         public Task<User> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var userToCreate = new User
+            try
             {
-                Id = Guid.NewGuid(),
-                Username = request.NewUser.Username,
-                Password = request.NewUser.Password,
-            };
+                var userToCreate = new User
+                {
+                    Id = Guid.NewGuid(),
+                    Username = request.NewUser.Username,
+                    Password = BCrypt.Net.BCrypt.HashPassword(request.NewUser.Password),
+                };
 
-            if (string.IsNullOrEmpty(userToCreate.Username) || string.IsNullOrEmpty(userToCreate.Password))
-            {
-                throw new ArgumentException("Username or password cannot be empty.");
+                if (string.IsNullOrEmpty(userToCreate.Username) || string.IsNullOrEmpty(userToCreate.Password))
+                {
+                    throw new ArgumentException("Username or password cannot be empty.");
+                }
+
+                var createdUser = _userRepository.RegisterUser(userToCreate);
+
+                return createdUser;
             }
-
-            var createdUser = _userRepository.RegisterUser(userToCreate);
-
-            return createdUser;
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
