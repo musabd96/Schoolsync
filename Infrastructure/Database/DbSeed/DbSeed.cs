@@ -1,4 +1,5 @@
-﻿using Domain.Models.Student;
+﻿using Domain.Models.Classrooms;
+using Domain.Models.Student;
 using Domain.Models.Teacher;
 using Domain.Models.Users;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,20 @@ namespace Infrastructure.Database.DbSeed
         {
             modelBuilder.Entity<User>().HasData(
                 new User { Id = Guid.NewGuid(), Username = "admin", Password = BCrypt.Net.BCrypt.HashPassword("admin123!") }
+            );
+        }
+
+        public static void SeedClassrooms(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Classroom>().HasData(
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Potions Classroom" },
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Charms Classroom" },
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Transfiguration Classroom" },
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Defense Against the Dark Arts Classroom" },
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Herbology Classroom" },
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "History of Magic Classroom" },
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Divination Classroom" },
+                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Care of Magical Creatures Classroom" }
             );
         }
     }
