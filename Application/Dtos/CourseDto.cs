@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Dtos
 {
-    internal class CourseDto
+    public class CourseDto
     {
     }
 }

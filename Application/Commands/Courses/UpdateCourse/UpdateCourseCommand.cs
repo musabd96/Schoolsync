@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Courses.UpdateCourse
 {
-    internal class UpdateCourseCommand
+    public class UpdateCourseCommand
     {
     }
 }

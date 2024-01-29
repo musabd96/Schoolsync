@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Courses.AddCourse
 {
-    internal class AddCourseCommandHandler
+    public class AddCourseCommandHandler
     {
     }
 }

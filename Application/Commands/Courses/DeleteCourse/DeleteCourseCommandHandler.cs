@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Courses.DeleteCourse
 {
-    internal class DeleteCourseCommandHandler
+    public class DeleteCourseCommandHandler
     {
     }
 }
