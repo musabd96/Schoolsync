@@ -61,7 +61,7 @@ namespace Infrastructure.Database.DbSeed
         public static void SeedClassrooms(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Classroom>().HasData(
-                new () { Id = Guid.NewGuid(), ClassroomName = "Newton" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Newton" },
                 new() { Id = Guid.NewGuid(), ClassroomName = "Einstein" },
                 new() { Id = Guid.NewGuid(), ClassroomName = "Tesla" },
                 new() { Id = Guid.NewGuid(), ClassroomName = "Curie" },
