@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories.Teachers
                     teacherToUpdate.FirstName = FirstName;
                     teacherToUpdate.LastName = LastName;
                     teacherToUpdate.DateOfBirth = DateOfBirth;
-                    teacherToUpdate.Address = Address;
+                    teacherToUpdate.Adress = Address;
                     teacherToUpdate.PhoneNumber = PhoneNumber;
                     teacherToUpdate.Email = Email;
                 }
