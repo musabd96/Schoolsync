@@ -61,14 +61,15 @@ namespace Infrastructure.Database.DbSeed
         public static void SeedClassrooms(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Classroom>().HasData(
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Potions Classroom" },
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Charms Classroom" },
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Transfiguration Classroom" },
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Defense Against the Dark Arts Classroom" },
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Herbology Classroom" },
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "History of Magic Classroom" },
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Divination Classroom" },
-                new Classroom { Id = Guid.NewGuid(), ClassroomName = "Care of Magical Creatures Classroom" }
+                new () { Id = Guid.NewGuid(), ClassroomName = "Newton" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Einstein" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Tesla" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Curie" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Kepler" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Darwin" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Bohr" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Mendel" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Pasteur" }
             );
         }
     }
