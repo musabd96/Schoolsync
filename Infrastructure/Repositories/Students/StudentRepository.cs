@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories.Students
         public async Task DeleteStudent(Guid id, CancellationToken cancellationToken)
         {
             var studentToDelete = await _appDbContext.Student.FindAsync(id);
-             if(studentToDelete != null)
+            if (studentToDelete != null)
             {
                 _appDbContext.Student.Remove(studentToDelete);
                 await _appDbContext.SaveChangesAsync();

@@ -86,10 +86,10 @@ namespace ReactApp.Server.Controllers.StudentController
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult>DeleteStudent(Guid id)
+        public async Task<IActionResult> DeleteStudent(Guid id)
         {
             var student = await _mediator.Send(new DeleteStudentCommand(id));
-            if(student != null)
+            if (student != null)
             {
                 return NoContent();
             }

@@ -11,7 +11,7 @@ namespace Application.Commands.Students.DeleteStudent
 
         public DeleteStudentCommandHandler(IStudentRepository studentRepository)
         {
-            _studentRepository = studentRepository;    
+            _studentRepository = studentRepository;
 
         }
 
@@ -19,18 +19,18 @@ namespace Application.Commands.Students.DeleteStudent
         {
             try
             {
-                Student studentToDelete = await _studentRepository.GetStudentById(request.Id,cancellation);
-                if(studentToDelete == null)
+                Student studentToDelete = await _studentRepository.GetStudentById(request.Id, cancellation);
+                if (studentToDelete == null)
                 {
                     throw new InvalidOperationException("No student with the given id was found");
                 }
 
-                await _studentRepository.DeleteStudent(request.Id,cancellation);
+                await _studentRepository.DeleteStudent(request.Id, cancellation);
 
                 return studentToDelete;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new InvalidOperationException("Error occurred while deleting the student.", ex);
             }
