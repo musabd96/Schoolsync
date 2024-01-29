@@ -10,7 +10,7 @@ namespace Infrastructure.Repositories.Students
         Task<Student> AddStudent(Student newStudent, CancellationToken cancellationToken);
         Task<Student> UpdateStudent(Guid id, string FirstName,
                               string LastName, DateOnly DateOfBirth,
-                              string Address, string PhoneNumber,
+                              string Adress, string PhoneNumber,
                               string Email, CancellationToken cancellationToken);
         Task DeleteStudent(Guid id, CancellationToken cancellationToken);
     }
