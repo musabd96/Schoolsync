@@ -16,5 +16,13 @@ namespace Infrastructure.Repositories.Users
         {
             throw new NotImplementedException();
         }
+        public async Task <User> LoginUser(string username)
+        {
+			if (string.IsNullOrWhiteSpace(username))
+			{
+				throw new ArgumentException("Username can not be null or empty.", nameof(username));
+			}
+			return await _appDbContext.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+		}
     }
 }

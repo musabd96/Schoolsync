@@ -1,5 +1,7 @@
 using Application;
 using Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ReactApp.Server.Helpers;
 
 namespace ReactApp.Server
 {
@@ -8,10 +10,18 @@ namespace ReactApp.Server
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+			var secretKey = SecretKeyHelper.GetSecretKey(builder.Configuration);
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
+			// Add services to the container.
+			builder.Services.AddAuthorization(options =>
+			{
+				options.AddPolicy("Admin", policy =>
+				{
+					policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
+					policy.RequireAuthenticatedUser();
+				});
+			});
+			builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

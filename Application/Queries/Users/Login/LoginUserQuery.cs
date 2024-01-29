@@ -1,14 +1,14 @@
-﻿using Application.Dtos;
+﻿using Domain.Models.Users;
 using MediatR;
 
 namespace Application.Queries.Users.Login
 {
-    public class LoginUserQuery : IRequest<string>
+	public class LoginUserQuery : IRequest<User>
     {
-        public LoginUserQuery(UserDto loginUser)
-        {
-            LoginUser = loginUser;
-        }
-        public UserDto LoginUser { get; set; }
-    }
+		public string Username { get; set; }
+		public LoginUserQuery(string username)
+		{
+			Username = username;
+		}
+	}
 }
