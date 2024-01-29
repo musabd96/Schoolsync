@@ -17,13 +17,13 @@ namespace Infrastructure.Repositories.Teachers
             return await _appDbContext.Teacher.ToListAsync(cancellationToken);
         }
 
-
         public Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken)
         {
             Teacher teacher = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id)!;
 
             return Task.FromResult(teacher);
         }
+
         public async Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
         {
             // Lägg till den nya läraren i DbSet och spara ändringarna i databasen
