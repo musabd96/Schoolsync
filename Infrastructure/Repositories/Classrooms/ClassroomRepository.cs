@@ -16,5 +16,22 @@ namespace Infrastructure.Repositories.Classrooms
         {
             return await _appDbContext.Classrooms.ToListAsync(cancellationToken);
         }
+
+        public async Task<Classroom> UpdateClassroom(Guid Id, string ClassroomName, CancellationToken cancellationToken)
+        {
+            Classroom classroomToUpdate = await _appDbContext.Classrooms.FirstOrDefaultAsync(cr => cr.Id == Id);
+            if (classroomToUpdate == null)
+            {
+                return null!;
+            }
+
+            // Update the classroom details
+            classroomToUpdate.ClassroomName = ClassroomName;
+
+            _appDbContext.Classrooms.Update(classroomToUpdate);
+            await _appDbContext.SaveChangesAsync(cancellationToken);
+
+            return classroomToUpdate;
+        }
     }
 }
