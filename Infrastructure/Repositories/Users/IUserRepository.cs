@@ -5,6 +5,6 @@ namespace Infrastructure.Repositories.Users
     public interface IUserRepository
     {
         Task<User> RegisterUser(User userToCreate);
-        Task<User> LoginUser(string username);
+        User AuthenticationUserLogin(string username, string password);
     }
 }

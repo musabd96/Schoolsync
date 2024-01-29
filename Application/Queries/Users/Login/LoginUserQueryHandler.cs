@@ -1,10 +1,9 @@
-﻿using Domain.Models.Users;
-using Infrastructure.Repositories.Users;
+﻿using Infrastructure.Repositories.Users;
 using MediatR;
 
 namespace Application.Queries.Users.Login
 {
-	public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, User>
+	public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, string>
     {
 		private readonly IUserRepository _userRepository;
 		public LoginUserQueryHandler(IUserRepository userRepository)
@@ -12,21 +11,19 @@ namespace Application.Queries.Users.Login
 			_userRepository = userRepository;
 		}
 
-		public async Task<string> Handle(LoginUserQuery request, CancellationToken cancellationToken)
+		public Task<string> Handle(LoginUserQuery request, CancellationToken cancellationToken)
         {
-			if (string.IsNullOrWhiteSpace(request.Username))
-			{
-				throw new ArgumentException("Username cannot be null or empty.", nameof(request.Username));
-			}
 
-			var user = await _userRepository.LoginUser(request.Username);
+			var user =  _userRepository.AuthenticationUserLogin(request.LoginUser.Username, request.LoginUser.Password);
+
 			if (user == null)
 			{
 				// Hantera fallet där användaren inte hittas. Du kan kasta ett undantag eller returnera null.
-				throw new KeyNotFoundException($"Användare med användarnamnet '{request.Username}' hittades inte.");
+				throw new KeyNotFoundException($"Användare med användarnamnet '{request.LoginUser.Username}' hittades inte.");
 			}
 
-			return user;
+
+			return Task.FromResult(user.Username);
 		}
     }
 }

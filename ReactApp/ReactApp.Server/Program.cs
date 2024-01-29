@@ -1,16 +1,14 @@
 using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using ReactApp.Server.Helpers;
 
 namespace ReactApp.Server
 {
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-			var secretKey = SecretKeyHelper.GetSecretKey(builder.Configuration);
 
 			// Add services to the container.
 			builder.Services.AddAuthorization(options =>
