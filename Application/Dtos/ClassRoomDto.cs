@@ -2,6 +2,6 @@
 {
     public class ClassroomDto
     {
-        public required string ClassroomName { get; set; }
+        public string ClassroomName { get; set; }
     }
 }
