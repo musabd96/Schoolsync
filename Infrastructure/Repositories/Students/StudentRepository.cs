@@ -42,9 +42,25 @@ namespace Infrastructure.Repositories.Students
             return await _appDbContext.Student.FindAsync(id);
         }
 
-        public Task<Student> UpdateStudent(Guid id, string FirstName, string LastName, DateTime DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public async Task<Student> UpdateStudent(Guid id, string FirstName, string LastName, DateOnly DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            Student studentToUpdate = await _appDbContext.Student.FirstOrDefaultAsync(s => s.Id == id, cancellationToken);
+            if (studentToUpdate == null)
+            {
+                return null!;
+            }
+            // Update the student details
+            studentToUpdate!.FirstName = FirstName;
+            studentToUpdate.LastName = LastName;
+            studentToUpdate.DateOfBirth = DateOfBirth;
+            studentToUpdate.Address = Address;
+            studentToUpdate.PhoneNumber = PhoneNumber;
+            studentToUpdate.Email = Email;
+
+            _appDbContext.Update(studentToUpdate);
+            await _appDbContext.SaveChangesAsync(cancellationToken);
+
+            return studentToUpdate;
         }
     }
 }

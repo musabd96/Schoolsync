@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Application.Commands.Students.AddStudent;
-using Application.Commands.Teachers.DeleteTeacher;
 using Application.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
 using ReactApp.Server.Controllers.StudentController;
-using ReactApp.Server.Controllers.TeacherController;
 
 namespace Tests.Student.Controllers
 {
@@ -43,8 +41,8 @@ namespace Tests.Student.Controllers
 
             // Mock the Send method of IMediator to return the expected result
             Mock.Get(_mediator)
-                .Setup(x => x.Send(It.IsAny<DeleteTeacherCommand>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new Domain.Models.Teacher.Teacher());
+                .Setup(x => x.Send(It.IsAny<AddStudentCommand>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new Domain.Models.Student.Student());
 
             // Act
             var result = await _controller.AddStudent(newStudent);
@@ -53,6 +51,5 @@ namespace Tests.Student.Controllers
             Assert.That(result, Is.InstanceOf<OkObjectResult>());
             Assert.That((result as OkObjectResult)?.StatusCode, Is.EqualTo(200));
         }
-
     }
 }

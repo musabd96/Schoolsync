@@ -41,7 +41,7 @@ namespace Tests.Teacher.Queries.GetTeacherById
             var result = await _handler!.Handle(query, CancellationToken.None);
 
             // Assert
-            Assert.IsNotNull(result, "The result should not be null");
+            Assert.That(result, Is.Not.Null, "The result should not be null");
             Assert.That(result.Id, Is.EqualTo(teacherId));
         }
 
@@ -61,7 +61,7 @@ namespace Tests.Teacher.Queries.GetTeacherById
             var result = await _handler!.Handle(query, CancellationToken.None);
 
             // Assert
-            Assert.IsNull(result);
+            Assert.That(result, Is.Null);
         }
     }
 }

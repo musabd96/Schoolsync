@@ -29,8 +29,6 @@ namespace Application.Commands.Students.AddStudent
 
             await _studentRepository.AddStudent(newStudent, cancellationToken);
 
-
-
             return (newStudent);
         }
     }
