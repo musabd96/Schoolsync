@@ -9,7 +9,7 @@ namespace Infrastructure.Repositories.Teachers
         Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken);
         Task<Teacher> UpdateTeacher(Guid id, string FirstName,
                               string LastName, DateOnly DateOfBirth,
-                              string Adress, string PhoneNumber,
+                              string Address, string PhoneNumber,
                               string Email, CancellationToken cancellationToken);
         Task<Teacher> DeleteTeacher(Guid id, CancellationToken cancellationToken);
     }

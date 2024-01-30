@@ -18,18 +18,18 @@ namespace Tests.Student.Commands.Delete_Student
 
         [SetUp]
 
-        public void Setup ()
+        public void Setup()
         {
-            _mockMediator = new Mock<IMediator> ();
+            _mockMediator = new Mock<IMediator>();
 
-            _studentController = new StudentController (_mockMediator.Object);
+            _studentController = new StudentController(_mockMediator.Object);
         }
 
         [Test]
         public async Task DeleteStudent_WithValisId_ShouldreturnNoContent()
         {
             //Arrange
-            var ValidId = Guid.NewGuid ();
+            var ValidId = Guid.NewGuid();
             _mockMediator.Setup(m => m.Send(It.IsAny<DeleteStudentCommand>(), It.IsAny<CancellationToken>()))
                             .ReturnsAsync(new Domain.Models.Student.Student());
 
@@ -49,7 +49,7 @@ namespace Tests.Student.Commands.Delete_Student
         public async Task DeleteStudent_WithInvalidId_ShouldReturnNotFound()
         {
             // Arrange
-            var invalidId = Guid.NewGuid ();
+            var invalidId = Guid.NewGuid();
             _mockMediator.Setup(m => m.Send(It.IsAny<DeleteStudentCommand>(), It.IsAny<CancellationToken>()))
                         .ReturnsAsync((Domain.Models.Student.Student)null);
             //Act

@@ -35,7 +35,7 @@ namespace Tests.Student.Commands.Delete_Student
             var result = await _handler.Handle(command, CancellationToken.None);
 
             // Assert
-            Assert.AreEqual(validId, result.Id);
+            Assert.That(result.Id, Is.EqualTo(validId));
             _studentRepository.Verify(repo => repo.DeleteStudent(validId, CancellationToken.None), Times.Once);
         }
 
