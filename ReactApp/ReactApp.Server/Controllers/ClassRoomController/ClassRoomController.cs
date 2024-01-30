@@ -1,4 +1,6 @@
-﻿using Application.Commands.Classrooms.UpdateClassroom;
+﻿using Application.Commands.Classrooms.AddClassroom;
+using Application.Commands.Classrooms.UpdateClassroom;
+using Application.Commands.Students.AddStudent;
 using Application.Commands.Students.UpdateStudent;
 using Application.Dtos;
 using Application.Queries.Classrooms.GetAllClassrooms;
@@ -41,6 +43,24 @@ namespace ReactApp.Server.Controllers.ClassroomController
                 return StatusCode(500, ex.Message);
             }
         }
+        // Add a new Classroom
+        [HttpPost]
+        [Route("addClassroom")]
+        public async Task<IActionResult> AddClassroom([FromBody] ClassroomDto classroomDto)
+        {
+            try
+            {
+                var command = new AddClassroomCommand(classroomDto);
+                var result = await _mediator.Send(command);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
 
         // Update a specific classroom
         [HttpPut]
