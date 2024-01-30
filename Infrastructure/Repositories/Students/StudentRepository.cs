@@ -53,7 +53,7 @@ namespace Infrastructure.Repositories.Students
             studentToUpdate!.FirstName = FirstName;
             studentToUpdate.LastName = LastName;
             studentToUpdate.DateOfBirth = DateOfBirth;
-            studentToUpdate.Adress = Address;
+            studentToUpdate.Address = Address;
             studentToUpdate.PhoneNumber = PhoneNumber;
             studentToUpdate.Email = Email;
 

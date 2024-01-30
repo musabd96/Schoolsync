@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories.Teachers
             return newTeacher;
         }
 
-        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateOnly DateOfBirth, string Adress, string PhoneNumber, string Email, CancellationToken cancellationToken)
+        public Task<Teacher> UpdateTeacher(Guid id, string FirstName, string LastName, DateOnly DateOfBirth, string Address, string PhoneNumber, string Email, CancellationToken cancellationToken)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories.Teachers
                     teacherToUpdate.FirstName = FirstName;
                     teacherToUpdate.LastName = LastName;
                     teacherToUpdate.DateOfBirth = DateOfBirth;
-                    teacherToUpdate.Adress = Adress;
+                    teacherToUpdate.Address = Address;
                     teacherToUpdate.PhoneNumber = PhoneNumber;
                     teacherToUpdate.Email = Email;
                 }

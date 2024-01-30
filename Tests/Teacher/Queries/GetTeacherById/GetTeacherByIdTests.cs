@@ -23,7 +23,7 @@ namespace Tests.Teacher.Queries.GetTeacherById
                     FirstName = "John",
                     LastName = "Doe",
                     DateOfBirth = new DateOnly(1982, 1, 15),
-                    Adress = "123 Main St, Cityville",
+                    Address = "123 Main St, Cityville",
                     PhoneNumber = "+1 555-1234",
                     Email = "john.doe@example.com"
                 });

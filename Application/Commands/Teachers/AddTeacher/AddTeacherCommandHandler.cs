@@ -25,7 +25,7 @@ namespace Application.Commands.Teachers.AddTeacher
                 FirstName = request.Teacher.FirstName,
                 LastName = request.Teacher.LastName,
                 DateOfBirth = request.Teacher.DateOfBirth,
-                Adress = request.Teacher.Address,
+                Address = request.Teacher.Address,
                 PhoneNumber = request.Teacher.PhoneNumber,
                 Email = request.Teacher.Email
             };

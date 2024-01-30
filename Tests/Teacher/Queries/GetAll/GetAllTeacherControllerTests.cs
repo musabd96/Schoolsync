@@ -38,7 +38,7 @@ namespace Tests.Teacher.Queries.GetAll
                     FirstName = "John",
                     LastName = "Doe",
                     DateOfBirth = new DateOnly(1982, 1, 15),
-                    Adress = "123 Main St, Cityville",
+                    Address = "123 Main St, Cityville",
                     PhoneNumber = "+1 555-1234",
                     Email = "john.doe@example.com"
                 },
@@ -47,7 +47,7 @@ namespace Tests.Teacher.Queries.GetAll
                     FirstName = "Jane",
                     LastName = "Smith",
                     DateOfBirth = new DateOnly(1975, 6, 22),
-                    Adress = "456 Oak St, Townsville",
+                    Address = "456 Oak St, Townsville",
                     PhoneNumber = "+1 555-5678",
                     Email = "jane.smith@example.com"
                 }

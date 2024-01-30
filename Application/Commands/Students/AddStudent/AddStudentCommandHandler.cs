@@ -22,7 +22,7 @@ namespace Application.Commands.Students.AddStudent
                 FirstName = request.Student.FirstName,
                 LastName = request.Student.LastName,
                 DateOfBirth = request.Student.DateOfBirth,
-                Adress = request.Student.Address,
+                Address = request.Student.Address,
                 PhoneNumber = request.Student.PhoneNumber,
                 Email = request.Student.Email
             };

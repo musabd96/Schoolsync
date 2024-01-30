@@ -23,7 +23,7 @@ namespace Tests.Student.Queries.GetStudentById
                     FirstName = "Nour",
                     LastName = "Solaiman",
                     DateOfBirth = new DateOnly(1984, 1, 15),
-                    Adress = "123 Main St, Cityville",
+                    Address = "123 Main St, Cityville",
                     PhoneNumber = "+1 444-0123",
                     Email = "nour.solaiman@example.com"
                 });

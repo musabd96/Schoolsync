@@ -64,7 +64,7 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Student",
-                columns: new[] { "Id", "Adress", "DateOfBirth", "Email", "FirstName", "LastName", "PhoneNumber" },
+                columns: new[] { "Id", "Address", "DateOfBirth", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[,]
                 {
                     { new Guid("0429a046-e220-4a14-860f-6cd2dc4ecf91"), "Linnégatan 202, Göteborg", new DateOnly(2006, 4, 28), "emma.ekstrom@schoolsync.com", "Emma", "Ekström", "+46 72 123 45 67" },
@@ -93,7 +93,7 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Teacher",
-                columns: new[] { "Id", "Adress", "DateOfBirth", "Email", "FirstName", "LastName", "PhoneNumber" },
+                columns: new[] { "Id", "Address", "DateOfBirth", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[,]
                 {
                     { new Guid("0980bf71-d31a-49fc-bb2b-7b61b118b283"), "Lärarstråket 6, Göteborg", new DateOnly(1973, 7, 8), "erik.berg@schoolsync.com", "Erik", "Berg", "+46 70 345 67 89" },
