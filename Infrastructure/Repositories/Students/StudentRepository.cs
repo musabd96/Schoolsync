@@ -21,11 +21,15 @@ namespace Infrastructure.Repositories.Students
             return newStudent;
         }
 
-        public Task<Student> DeleteStudent(Guid id, CancellationToken cancellationToken)
+        public async Task DeleteStudent(Guid id, CancellationToken cancellationToken)
         {
-            Student student = _appDbContext.Student.FirstOrDefault(s => s.Id == id)!;
+            var studentToDelete = await _appDbContext.Student.FindAsync(id);
+            if (studentToDelete != null)
+            {
+                _appDbContext.Student.Remove(studentToDelete);
+                await _appDbContext.SaveChangesAsync();
 
-            return Task.FromResult(student);
+            }
         }
 
         public async Task<List<Student>> GetAllStudentsAsync(CancellationToken cancellationToken)
