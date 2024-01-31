@@ -1,8 +1,7 @@
 ﻿namespace Application.Dtos
 {
-    public class ClassRoomDto
+    public class ClassroomDto
     {
-        public required string ClassRoomName { get; set; }
-
+        public string ClassroomName { get; set; }
     }
 }

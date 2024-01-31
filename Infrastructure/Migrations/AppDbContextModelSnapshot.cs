@@ -19,6 +19,63 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "7.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Domain.Models.Classrooms.Classroom", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ClassroomName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Classrooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b1f9441d-f65a-4c97-8431-9fc725537585"),
+                            ClassroomName = "Potions Classroom"
+                        },
+                        new
+                        {
+                            Id = new Guid("20a87e88-f10b-4f26-a80d-e03bdcdda051"),
+                            ClassroomName = "Charms Classroom"
+                        },
+                        new
+                        {
+                            Id = new Guid("42a49ecf-222a-4aba-891c-ee34f1a13020"),
+                            ClassroomName = "Transfiguration Classroom"
+                        },
+                        new
+                        {
+                            Id = new Guid("a7c6a544-0ecb-4806-a5ec-a124afdba3b4"),
+                            ClassroomName = "Defense Against the Dark Arts Classroom"
+                        },
+                        new
+                        {
+                            Id = new Guid("673d7a08-291b-4516-a9b8-769eef9c467c"),
+                            ClassroomName = "Herbology Classroom"
+                        },
+                        new
+                        {
+                            Id = new Guid("30218d2e-0e1e-4373-894e-ecbfe01315cd"),
+                            ClassroomName = "History of Magic Classroom"
+                        },
+                        new
+                        {
+                            Id = new Guid("ff4b73d8-6a67-4e1c-a152-858272d9cf42"),
+                            ClassroomName = "Divination Classroom"
+                        },
+                        new
+                        {
+                            Id = new Guid("93472cf5-77a7-4bb3-b878-e48aa1a46ea2"),
+                            ClassroomName = "Care of Magical Creatures Classroom"
+                        });
+                });
+
             modelBuilder.Entity("Domain.Models.Student.Student", b =>
                 {
                     b.Property<Guid>("Id")

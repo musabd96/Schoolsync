@@ -1,4 +1,5 @@
-﻿using Domain.Models.Student;
+﻿using Domain.Models.Classrooms;
+using Domain.Models.Student;
 using Domain.Models.Teacher;
 using Domain.Models.Users;
 using Microsoft.EntityFrameworkCore;
@@ -36,25 +37,40 @@ namespace Infrastructure.Database.DbSeed
 
 		}
 
-		public static void SeedTeachers(ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<Teacher>().HasData(
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Karin", LastName = "Lind", DateOfBirth = new DateOnly(1980, 6, 15), Address = "Skolgatan 1, Göteborg", PhoneNumber = "+46 70 123 45 67", Email = "karin.lind@schoolsync.com" },
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Anders", LastName = "Svensson", DateOfBirth = new DateOnly(1975, 9, 21), Address = "Lärargatan 2, Göteborg", PhoneNumber = "+46 72 345 67 89", Email = "anders.svensson@schoolsync.com" },
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Camilla", LastName = "Eriksson", DateOfBirth = new DateOnly(1982, 11, 3), Address = "Undervisningsvägen 3, Göteborg", PhoneNumber = "+46 73 567 89 01", Email = "camilla.eriksson@schoolsync.com" },
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Mats", LastName = "Andersson", DateOfBirth = new DateOnly(1978, 2, 15), Address = "Lärarvägen 4, Göteborg", PhoneNumber = "+46 76 789 01 23", Email = "mats.andersson@schoolsync.com" },
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Anna", LastName = "Hedström", DateOfBirth = new DateOnly(1985, 4, 28), Address = "Pedagogvägen 5, Göteborg", PhoneNumber = "+46 72 123 45 67", Email = "anna.hedstrom@schoolsync.com" },
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Erik", LastName = "Berg", DateOfBirth = new DateOnly(1973, 7, 8), Address = "Lärarstråket 6, Göteborg", PhoneNumber = "+46 70 345 67 89", Email = "erik.berg@schoolsync.com" },
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Sara", LastName = "Johansson", DateOfBirth = new DateOnly(1987, 10, 19), Address = "Utvecklingsgatan 7, Göteborg", PhoneNumber = "+46 73 567 89 01", Email = "sara.johansson@schoolsync.com" },
-				new Teacher { Id = Guid.NewGuid(), FirstName = "Johan", LastName = "Lund", DateOfBirth = new DateOnly(1979, 1, 31), Address = "Lärarvägen 8, Göteborg", PhoneNumber = "+46 76 789 01 23", Email = "johan.lund@schoolsync.com" }
-			);
-		}
-		public static void SeedUsers(ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<User>().HasData(
-				new User { Id = Guid.NewGuid(), Username = "admin", PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin123!") }
-				);
-		}
+        public static void SeedTeachers(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Teacher>().HasData(
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Karin", LastName = "Lind", DateOfBirth = new DateOnly(1980, 6, 15), Address = "Skolgatan 1, Göteborg", PhoneNumber = "+46 70 123 45 67", Email = "karin.lind@schoolsync.com" },
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Anders", LastName = "Svensson", DateOfBirth = new DateOnly(1975, 9, 21), Address = "Lärargatan 2, Göteborg", PhoneNumber = "+46 72 345 67 89", Email = "anders.svensson@schoolsync.com" },
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Camilla", LastName = "Eriksson", DateOfBirth = new DateOnly(1982, 11, 3), Address = "Undervisningsvägen 3, Göteborg", PhoneNumber = "+46 73 567 89 01", Email = "camilla.eriksson@schoolsync.com" },
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Mats", LastName = "Andersson", DateOfBirth = new DateOnly(1978, 2, 15), Address = "Lärarvägen 4, Göteborg", PhoneNumber = "+46 76 789 01 23", Email = "mats.andersson@schoolsync.com" },
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Anna", LastName = "Hedström", DateOfBirth = new DateOnly(1985, 4, 28), Address = "Pedagogvägen 5, Göteborg", PhoneNumber = "+46 72 123 45 67", Email = "anna.hedstrom@schoolsync.com" },
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Erik", LastName = "Berg", DateOfBirth = new DateOnly(1973, 7, 8), Address = "Lärarstråket 6, Göteborg", PhoneNumber = "+46 70 345 67 89", Email = "erik.berg@schoolsync.com" },
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Sara", LastName = "Johansson", DateOfBirth = new DateOnly(1987, 10, 19), Address = "Utvecklingsgatan 7, Göteborg", PhoneNumber = "+46 73 567 89 01", Email = "sara.johansson@schoolsync.com" },
+                new Teacher { Id = Guid.NewGuid(), FirstName = "Johan", LastName = "Lund", DateOfBirth = new DateOnly(1979, 1, 31), Address = "Lärarvägen 8, Göteborg", PhoneNumber = "+46 76 789 01 23", Email = "johan.lund@schoolsync.com" }
+            );
+        }
 
-	}
+        public static void SeedUsers(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasData(
+                new User { Id = Guid.NewGuid(), Username = "admin", PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123!") }
+            );
+        }
+
+        public static void SeedClassrooms(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Classroom>().HasData(
+                new() { Id = Guid.NewGuid(), ClassroomName = "Newton" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Einstein" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Tesla" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Curie" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Kepler" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Darwin" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Bohr" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Mendel" },
+                new() { Id = Guid.NewGuid(), ClassroomName = "Pasteur" }
+            );
+        }
+    }
 }

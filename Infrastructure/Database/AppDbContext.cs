@@ -1,4 +1,4 @@
-﻿
+﻿using Domain.Models.Classrooms;
 using Domain.Models.Student;
 using Domain.Models.Teacher;
 using Domain.Models.Users;
@@ -16,6 +16,7 @@ namespace Infrastructure.Database
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Classroom> Classrooms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,8 +27,8 @@ namespace Infrastructure.Database
             DbSeed.DbSeed.SeedStudents(modelBuilder);
             DbSeed.DbSeed.SeedTeachers(modelBuilder);
 
-            // Seed users
             DbSeed.DbSeed.SeedUsers(modelBuilder);
+            DbSeed.DbSeed.SeedClassrooms(modelBuilder);
         }
     }
 }

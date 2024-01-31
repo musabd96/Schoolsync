@@ -1,4 +1,5 @@
 using Application.Commands.Students.AddStudent;
+using Application.Commands.Students.DeleteStudent;
 using Application.Commands.Students.UpdateStudent;
 using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
@@ -84,6 +85,17 @@ namespace ReactApp.Server.Controllers.StudentController
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteStudent(Guid id)
+        {
+            var student = await _mediator.Send(new DeleteStudentCommand(id));
+            if (student != null)
+            {
+                return NoContent();
+            }
+            return NotFound();
+        }
+
         // Update Student
         [HttpPut]
         [Route("updateStudent")]
@@ -102,6 +114,14 @@ namespace ReactApp.Server.Controllers.StudentController
             }
 
         }
+
+
+
+
+
+
+
+
 
     }
 }
