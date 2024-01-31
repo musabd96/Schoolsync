@@ -1,12 +1,10 @@
 ﻿using Application.Commands.Classrooms.AddClassroom;
 using Application.Commands.Classrooms.UpdateClassroom;
-using Application.Commands.Students.AddStudent;
-using Application.Commands.Students.UpdateStudent;
 using Application.Dtos;
 using Application.Queries.Classrooms.GetAllClassrooms;
+using Application.Queries.Classrooms.GetClassroomsById;
 using Domain.Models.Classrooms;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ReactApp.Server.Controllers.ClassroomController
@@ -24,7 +22,6 @@ namespace ReactApp.Server.Controllers.ClassroomController
 
         [HttpGet]
         [Route("getAllClassrooms")]
-
         public async Task<IActionResult> GetAllClassrooms()
         {
             try
@@ -43,6 +40,26 @@ namespace ReactApp.Server.Controllers.ClassroomController
                 return StatusCode(500, ex.Message);
             }
         }
+
+        //GetClassroomById
+        [HttpGet]
+        [Route("getClassroomById/{classroomId}")]
+        public async Task<IActionResult> GetClassroomById(Guid classroomId)
+        {
+            try
+            {
+                var query = new GetClassroomByIdQuery(classroomId);
+                var teacher = await _mediator.Send(query);
+                return teacher != null ? Ok(teacher) : NotFound($"No teacher found with ID: {classroomId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
         // Add a new Classroom
         [HttpPost]
         [Route("addClassroom")]

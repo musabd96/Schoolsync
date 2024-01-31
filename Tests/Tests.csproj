@@ -24,8 +24,4 @@
     <ProjectReference Include="..\ReactApp\ReactApp.Server\ReactApp.Server.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Classroom\Queries\GetById\" />
-  </ItemGroup>
-
 </Project>
