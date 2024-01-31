@@ -30,7 +30,7 @@ namespace Infrastructure.Repositories.Users
                 throw new Exception(ex.Message);
             }
         }
-        public User AuthenticationUserLogin(string username, string password)
+        public Task<User> AuthenticationUserLogin(string username, string password)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Infrastructure.Repositories.Users
                     throw new Exception("Wrong password");
                 }
 
-                return User;
+                return Task.FromResult(User);
             }
             catch (ArgumentException ex) 
             { 

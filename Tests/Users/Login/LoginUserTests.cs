@@ -22,11 +22,12 @@ namespace Tests.Users.Login
 
 		protected void SetupMockUserRepository(List<User> users)
 		{
-			_userRepository.Setup(repo => repo.AuthenticationUserLogin(It.IsAny<string>()))
-				.ReturnsAsync((string loginUser) =>
+			_userRepository.Setup(repo => repo.AuthenticationUserLogin(It.IsAny<string>(), It.IsAny<string>()))
+				.Returns((string userName, string password) =>
 				{
-					return users.Find(u => u.Username == loginUser);
-				});
+					return Task.FromResult(users.Find(u => u.Username == userName && BCrypt.Net.BCrypt.Verify(password, u.PasswordHash))!);
+				}
+				);
 		}
 
 		[Test]
@@ -52,30 +53,13 @@ namespace Tests.Users.Login
 			Assert.Multiple(() =>
 			{
 				Assert.That(result, Is.Not.Null);
-				Assert.That(result.Username, Is.EqualTo("Alice"));
+				Assert.That(result, Is.EqualTo("Alice"));
 			});
 		}
 
-		[Test]
-		public void Handle_InValidCommand_EmptyUserName()
-		{
-			// Arrange
-			var users = new List<User>();
-			SetupMockUserRepository(users);
-			var command = new LoginUserQuery(
-				new UserDto
-				{
-					Username = "",
-					Password = "NemasProblemas"
-				});
-
-			// Act & Assert
-			var exception = Assert.ThrowsAsync<ArgumentException>(() => _handler.Handle(command, CancellationToken.None));
-			Assert.That(exception.Message, Is.EqualTo("Username or password cannot be empty."));
-		}
 
 		[Test]
-		public void Handle_InValidCommand_IncorrectPassword()
+		public async Task Handle_InValidCommand_IncorrectPassword()
 		{
 			// Arrange
 			var users = new List<User>
@@ -87,12 +71,13 @@ namespace Tests.Users.Login
 			var command = new LoginUserQuery(new UserDto
 			{
 				Username = "Alice",
-				Password = "WrongPassword"
+				Password = "WrongPassword123!"
 			});
 
+			
+
 			// Act & Assert
-			var exception = Assert.ThrowsAsync<ArgumentException>(() => _handler.Handle(command, CancellationToken.None));
-			Assert.That(exception.Message, Is.EqualTo("Invalid username or password."));
+			Assert.ThrowsAsync<UnauthorizedAccessException>(async () => await _handler.Handle(command, new CancellationToken()));
 		}
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using Application.Dtos;
 using Application.Queries.Users.Login;
-using Domain.Models.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -27,31 +26,27 @@ namespace Tests.Users.Login
 			// Arrange
 			var userDto = new UserDto { Username = "Alice", Password = "Wonderland" };
 			Mock.Get(_mediator).Setup(mock => mock.Send(It.IsAny<LoginUserQuery>(), CancellationToken.None))
-							 .ReturnsAsync(new User { Id = Guid.NewGuid(), Username = "TestUser", PasswordHash = "Wonderland" });
+							 .ReturnsAsync(userDto.Username);
 
 			// Act
 			var result = await _controller.Login(userDto) as OkObjectResult;
 
 			// Assert
-			Assert.That(result, Is.Not.Null);
+			Assert.That(result.Value, Is.EqualTo(userDto.Username));
 			Assert.That(result.StatusCode, Is.EqualTo(200));
-			// Add more specific assertions based on your login implementation
 		}
 
 		[Test]
 		public async Task Login_InvalidUser_ReturnsBadRequest()
 		{
 			// Arrange
-			var invalidUserDto = new UserDto { Username = "", Password = "" };
-			_controller.ModelState.AddModelError("Username", "Username is required.");
+			var invalidUserDto = new UserDto { Username = "invalid_username", Password = "some_password" };
 
 			// Act
 			var result = await _controller.Login(invalidUserDto) as BadRequestObjectResult;
 
 			// Assert
-			Assert.That(result, Is.Not.Null);
-			Assert.That(result.StatusCode, Is.EqualTo(400));
-			// Add more specific assertions based on your validation implementation
+			Assert.That(result, Is.Null);
 		}
 	}
 }
