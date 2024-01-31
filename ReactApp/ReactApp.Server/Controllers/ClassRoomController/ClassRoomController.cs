@@ -49,12 +49,12 @@ namespace ReactApp.Server.Controllers.ClassroomController
             try
             {
                 var query = new GetClassroomByIdQuery(classroomId);
-                var teacher = await _mediator.Send(query);
-                return teacher != null ? Ok(teacher) : NotFound($"No teacher found with ID: {classroomId}");
+                var classroom = await _mediator.Send(query);
+                return classroom != null ? Ok(classroom) : NotFound($"No classroom found with ID: {classroomId}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
+                Console.WriteLine($"Exception in GetClassroomById: {ex.Message}");
 
                 return StatusCode(500, "Internal Server Error");
             }
