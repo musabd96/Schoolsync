@@ -4,22 +4,22 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ReactApp.Server
 {
-	public class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
-			// Add services to the container.
-			builder.Services.AddAuthorization(options =>
-			{
-				options.AddPolicy("Admin", policy =>
-				{
-					policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
-					policy.RequireAuthenticatedUser();
-				});
-			});
-			builder.Services.AddControllers();
+            // Add services to the container.
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy =>
+                {
+                    policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
+                    policy.RequireAuthenticatedUser();
+                });
+            });
+            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

@@ -34,7 +34,7 @@ namespace Infrastructure.Repositories.Users
         {
             try
             {
-               var User = _appDbContext.Users.First(u =>  u.Username == username);
+                var User = _appDbContext.Users.First(u => u.Username == username);
 
                 if (User == null)
                 {
@@ -42,23 +42,23 @@ namespace Infrastructure.Repositories.Users
                 }
 
                 // Verify the password by comparing the hashed input password with the stored hashed password
-                if(!VerifyPasswordHash(password, User.PasswordHash))
+                if (!VerifyPasswordHash(password, User.PasswordHash))
                 {
                     throw new Exception("Wrong password");
                 }
 
                 return Task.FromResult(User);
             }
-            catch (ArgumentException ex) 
-            { 
+            catch (ArgumentException ex)
+            {
                 throw new ArgumentException(ex.Message);
             }
-		}
+        }
 
-		private bool VerifyPasswordHash(string password, string storedHash)
-		{
-			// Use BCrypt to verify the password hash
-			return BCrypt.Net.BCrypt.Verify(password, storedHash);
-		}
-	}
+        private bool VerifyPasswordHash(string password, string storedHash)
+        {
+            // Use BCrypt to verify the password hash
+            return BCrypt.Net.BCrypt.Verify(password, storedHash);
+        }
+    }
 }

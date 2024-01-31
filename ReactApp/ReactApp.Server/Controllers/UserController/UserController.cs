@@ -34,12 +34,12 @@ namespace ReactApp.Server.Controllers.UserController
             }
         }
 
-		[HttpPost("login")]
-		[ProducesResponseType(typeof(TokenDto), StatusCodes.Status200OK)]
-		[ProducesResponseType(typeof(Errors), StatusCodes.Status400BadRequest)]
-		[ProducesResponseType(StatusCodes.Status401Unauthorized)]
-		public async Task<IActionResult> Login([FromBody] UserDto userToLogin)
-		{
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(TokenDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Errors), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Login([FromBody] UserDto userToLogin)
+        {
             try
             {
                 string token = await _mediator.Send(new LoginUserQuery(userToLogin));
@@ -48,8 +48,8 @@ namespace ReactApp.Server.Controllers.UserController
             }
             catch (ArgumentException ex)
             {
-				return BadRequest(ex.Message);
-			}
-		}
-	}
+                return BadRequest(ex.Message);
+            }
+        }
+    }
 }
