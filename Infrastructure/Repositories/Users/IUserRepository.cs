@@ -6,5 +6,6 @@ namespace Infrastructure.Repositories.Users
     {
         Task<User> RegisterUser(User userToCreate);
         User AuthenticationUserLogin(string username, string password);
-    }
+		void AuthenticationUserLogin(string v);
+	}
 }
