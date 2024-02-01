@@ -64,7 +64,7 @@ namespace ReactApp.Server
             });
 
 
-           
+
 
             // Configure JWT Bearer authentication.
             builder.Services.AddAuthentication(options =>

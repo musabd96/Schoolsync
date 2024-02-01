@@ -8,7 +8,7 @@ namespace Application.Dtos
 {
     public class LogInDto
     {
-        public  required string UserName { get; set; }
+        public required string UserName { get; set; }
         public string Password { get; set; }
     }
 }

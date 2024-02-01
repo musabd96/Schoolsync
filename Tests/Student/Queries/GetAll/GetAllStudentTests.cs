@@ -21,7 +21,7 @@ namespace Tests.Student.Queries.NewFolder
         [Test]
         public async Task GetAllStudents_WhenStudentExists_ReturnallStudents()
         {
-            
+
 
         }
 

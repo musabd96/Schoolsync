@@ -45,7 +45,7 @@ namespace ReactApp.Server.Controllers.UserController
             }
         }
 
-      
+
         [HttpPost("login")]
         [AllowAnonymous]
         [ProducesResponseType(typeof(TokenDto), StatusCodes.Status200OK)]
