@@ -1,5 +1,7 @@
 ﻿using Application.Commands.Teachers.UpdateTeacher;
 using Application.Dtos;
+using Application.Validators.GuidValidation;
+using Application.Validators.Teachers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -14,11 +16,16 @@ namespace Tests.Teacher.Commands.UpdateTeacher
         private IMediator _mediator;
         private TeacherController _controller;
 
-        [SetUp]
         public void Setup()
         {
+            // Initialize or mock IMediator implementation (dependency injection)
             _mediator = Mock.Of<IMediator>();
-            _controller = new TeacherController(_mediator);
+
+            // Mock the TeacherValidator and GuidValidator
+            var teacherValidator = Mock.Of<TeacherValidator>();
+            var guidValidator = Mock.Of<GuidValidator>();
+
+            _controller = new TeacherController(_mediator, teacherValidator, guidValidator);
         }
 
         [Test]
