@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Classroom\Queries\GetById\" />
+    <Folder Include="Course\Commands\" />
   </ItemGroup>
 
 </Project>
