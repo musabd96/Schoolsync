@@ -3,12 +3,10 @@ using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.Application;
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 namespace ReactApp.Server
 {
@@ -32,9 +30,6 @@ namespace ReactApp.Server
             });
 
             builder.Services.AddEndpointsApiExplorer();
-
-
-
             builder.Services.AddSwaggerGen(SwaggerUiConfig =>
             {
                 SwaggerUiConfig.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
@@ -44,7 +39,8 @@ namespace ReactApp.Server
                 {
                     Name = "Authorization",
                     Type = SecuritySchemeType.Http,
-                    BearerFormat = "JTW",
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
                     In = ParameterLocation.Header,
                     Description = "JWT Authorization header using the Bearer scheme."
                 });
@@ -67,6 +63,8 @@ namespace ReactApp.Server
                 });
             });
 
+
+           
 
             // Configure JWT Bearer authentication.
             builder.Services.AddAuthentication(options =>
@@ -107,8 +105,10 @@ namespace ReactApp.Server
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllers();
 
