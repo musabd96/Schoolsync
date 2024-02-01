@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Classrooms;
 using Domain.Models.Student;
+using Domain.Models.Teacher;
 
 namespace Infrastructure.Repositories.Classrooms
 {
@@ -9,5 +10,6 @@ namespace Infrastructure.Repositories.Classrooms
 
         Task<Classroom> AddClassroom(Classroom newClassroom, CancellationToken cancellationToken);
         Task<Classroom> UpdateClassroom(Guid id, string ClassroomName, CancellationToken cancellationToken);
+        Task<Classroom> DeleteClassroom(Guid id, CancellationToken cancellationToken);
     }
 }

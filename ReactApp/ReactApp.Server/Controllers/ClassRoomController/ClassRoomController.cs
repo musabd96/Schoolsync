@@ -1,4 +1,5 @@
 ﻿using Application.Commands.Classrooms.AddClassroom;
+using Application.Commands.Classrooms.DeleteClassroom;
 using Application.Commands.Classrooms.UpdateClassroom;
 using Application.Commands.Students.AddStudent;
 using Application.Commands.Students.UpdateStudent;
@@ -60,6 +61,25 @@ namespace ReactApp.Server.Controllers.ClassroomController
                 return StatusCode(500, ex.Message);
             }
         }
+        // Delete a classroom by id
+        [HttpDelete]
+        [Route("deleteClassroomById/{classroomId}")]
+        public async Task<IActionResult> DeleteClassroomById(Guid classroomId)
+        {
+            try
+            {
+                var query = new DeleteClassroomCommand(classroomId);
+                var classroom = await _mediator.Send(query);
+                return classroom != null ? Ok(classroom) : NotFound($"No classroom found with ID: {classroomId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in DeleteClassroomById: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
 
 
         // Update a specific classroom
@@ -78,6 +98,7 @@ namespace ReactApp.Server.Controllers.ClassroomController
             {
                 return StatusCode(500, ex.Message);
             }
+
         }
     }
 }

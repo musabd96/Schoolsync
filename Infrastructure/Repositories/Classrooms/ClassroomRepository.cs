@@ -42,5 +42,25 @@ namespace Infrastructure.Repositories.Classrooms
 
             return classroomToUpdate;
         }
+        public async Task<Classroom> DeleteClassroom(Guid classroomId, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var classroomToDelete = await _appDbContext.Classrooms.FirstOrDefaultAsync(c => c.Id == classroomId, cancellationToken);
+
+                if (classroomToDelete != null)
+                {
+                    _appDbContext.Remove(classroomToDelete);
+                    await _appDbContext.SaveChangesAsync(cancellationToken);
+                }
+
+                return classroomToDelete;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while deleting a classroom with ID {classroomId} from the database", ex);
+            }
+        }
+
     }
 }
