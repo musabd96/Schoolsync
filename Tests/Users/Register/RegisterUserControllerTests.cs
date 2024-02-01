@@ -26,7 +26,7 @@ namespace Tests.Users.Register
             // Arrange
             var userDto = new UserDto { Username = "Tarzan", Password = "Coconut" };
             Mock.Get(_mediator).Setup(mock => mock.Send(It.IsAny<RegisterUserCommand>(), CancellationToken.None))
-                             .ReturnsAsync(new User { Id = Guid.NewGuid(), Username = "TestUser", Password = "Coconut" });
+                             .ReturnsAsync(new User { Id = Guid.NewGuid(), Username = "TestUser", PasswordHash = "Coconut" });
 
             // Act
             var result = await _controller.Register(userDto) as CreatedAtActionResult;

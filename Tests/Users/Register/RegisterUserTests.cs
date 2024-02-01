@@ -49,7 +49,7 @@ namespace Tests.Users.Register
             Assert.Multiple(() =>
             {
                 Assert.That(result.Username, Is.EqualTo("Bojan"));
-                Assert.That(BCrypt.Net.BCrypt.Verify("GreatPassw0rd!", result.Password), Is.True);
+                Assert.That(BCrypt.Net.BCrypt.Verify("GreatPassw0rd!", result.PasswordHash), Is.True);
             });
         }
 

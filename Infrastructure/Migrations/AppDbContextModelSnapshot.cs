@@ -112,7 +112,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("bd4aaf06-2e8f-4dfa-942b-a21396b07a64"),
+                            Id = new Guid("daeaea2b-dd4e-41d9-b27b-86a08a792eee"),
                             Address = "Kungsgatan 123, Göteborg",
                             DateOfBirth = new DateOnly(2006, 5, 12),
                             Email = "elsa.andersson@schoolsync.com",
@@ -122,7 +122,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("85cb9778-eb29-4d8e-b532-42069091b45b"),
+                            Id = new Guid("e46c5bd2-9ba2-4508-a8a3-017bfdf5d52e"),
                             Address = "Avenyn 456, Göteborg",
                             DateOfBirth = new DateOnly(2005, 8, 21),
                             Email = "oscar.bergqvist@schoolsync.com",
@@ -132,7 +132,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("126c9d76-5c2a-404e-93e7-9032b92eba2c"),
+                            Id = new Guid("86900fbe-65e1-4552-abea-803d1039d560"),
                             Address = "Vasagatan 789, Göteborg",
                             DateOfBirth = new DateOnly(2007, 11, 3),
                             Email = "hanna.carlsson@schoolsync.com",
@@ -142,7 +142,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b4f8266f-9932-436e-8b89-19c455feb020"),
+                            Id = new Guid("aa64c38f-fb8f-4b36-b42a-27b096e59174"),
                             Address = "Haga Nygata 101, Göteborg",
                             DateOfBirth = new DateOnly(2007, 2, 15),
                             Email = "alexander.dahlstrom@schoolsync.com",
@@ -152,7 +152,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ceee7a1d-295a-4296-81de-10a4823420da"),
+                            Id = new Guid("8737416d-b13a-4b21-afcc-d7e2acde6480"),
                             Address = "Linnégatan 202, Göteborg",
                             DateOfBirth = new DateOnly(2006, 4, 28),
                             Email = "emma.ekstrom@schoolsync.com",
@@ -162,7 +162,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9d694b82-325e-474d-8b7e-84fc19ae9837"),
+                            Id = new Guid("d7c3931e-baa0-41c9-8560-12f778c0a9c6"),
                             Address = "Kungsportsavenyn 303, Göteborg",
                             DateOfBirth = new DateOnly(2005, 7, 8),
                             Email = "liam.forsberg@schoolsync.com",
@@ -172,7 +172,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f89e6ae8-2e80-4116-81d0-b595663e541e"),
+                            Id = new Guid("b3c45463-b763-42fc-b070-872b47a4ee31"),
                             Address = "Första Långgatan 404, Göteborg",
                             DateOfBirth = new DateOnly(2007, 10, 19),
                             Email = "ella.gustavsson@schoolsync.com",
@@ -182,7 +182,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("701771aa-43b5-4bc0-bf51-219e3172afde"),
+                            Id = new Guid("fbd36c2b-0563-4621-9a30-deb2826ae0b6"),
                             Address = "Andra Långgatan 505, Göteborg",
                             DateOfBirth = new DateOnly(2005, 1, 31),
                             Email = "oliver.hedlund@schoolsync.com",
@@ -192,7 +192,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1fcd4a74-4e4c-48db-878d-6ef800ad0ce3"),
+                            Id = new Guid("586d6ca5-0ac3-4149-8ac3-dedbdb510354"),
                             Address = "Västra Hamngatan 606, Göteborg",
                             DateOfBirth = new DateOnly(2006, 3, 14),
                             Email = "maja.isaksson@schoolsync.com",
@@ -202,7 +202,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("762b5094-a53c-4569-bc09-809085c487a0"),
+                            Id = new Guid("9b83ef31-3d50-46a6-90f8-4840ac5e87bb"),
                             Address = "Storgatan 707, Göteborg",
                             DateOfBirth = new DateOnly(2005, 6, 25),
                             Email = "william.johansson@schoolsync.com",
@@ -212,7 +212,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("adede63d-9347-413f-9a0a-2b8e8ef16381"),
+                            Id = new Guid("f9368541-560a-44aa-a597-cb968a242e8a"),
                             Address = "Östra Hamngatan 808, Göteborg",
                             DateOfBirth = new DateOnly(2007, 9, 5),
                             Email = "alice.karlsson@schoolsync.com",
@@ -222,7 +222,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("834d6f1a-8bdd-45f7-b7bc-ec75fae8fb3f"),
+                            Id = new Guid("cf4c8970-fd4c-4a6d-a89b-deb5cf6e2871"),
                             Address = "Nordenskiöldsgatan 909, Göteborg",
                             DateOfBirth = new DateOnly(2005, 12, 16),
                             Email = "noah.lindgren@schoolsync.com",
@@ -232,7 +232,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c260b098-4010-4ead-a863-7b6549b622bf"),
+                            Id = new Guid("67e43636-8b09-46ac-8770-e1c490184710"),
                             Address = "Lisebergsgatan 1111, Göteborg",
                             DateOfBirth = new DateOnly(2006, 2, 27),
                             Email = "astrid.svensson@schoolsync.com",
@@ -242,7 +242,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e111746a-8208-4821-bcd3-a593b740bbc6"),
+                            Id = new Guid("da5e1454-8795-4a95-b08b-5dd26bc51f11"),
                             Address = "Fiskebäcksgatan 1212, Göteborg",
                             DateOfBirth = new DateOnly(2005, 5, 9),
                             Email = "erik.toresson@schoolsync.com",
@@ -252,7 +252,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6ea0dce9-7a42-4051-894f-f6cef41044eb"),
+                            Id = new Guid("09712197-eb3c-42e1-ad6e-8c69089c9eb8"),
                             Address = "Karl Johansgatan 1313, Göteborg",
                             DateOfBirth = new DateOnly(2007, 8, 20),
                             Email = "amanda.vikstrom@schoolsync.com",
@@ -262,7 +262,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("958a5a41-4590-4492-bc37-ddcaaa3dec24"),
+                            Id = new Guid("f4035c29-5c75-4934-9e67-709a7e8d414b"),
                             Address = "Magasinsgatan 1414, Göteborg",
                             DateOfBirth = new DateOnly(2006, 11, 1),
                             Email = "gustav.werner@schoolsync.com",
@@ -272,7 +272,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f7cac081-4a96-484b-999d-ec4742097049"),
+                            Id = new Guid("490cc1ed-283a-4e10-8b53-f7759f78d431"),
                             Address = "Södra Hamngatan 1515, Göteborg",
                             DateOfBirth = new DateOnly(2005, 1, 15),
                             Email = "sofia.aberg@schoolsync.com",
@@ -282,7 +282,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("453d2d4b-2893-4a7b-a644-61ec8f2e6e95"),
+                            Id = new Guid("547c281e-f2ba-4aae-9096-d18fcf712f93"),
                             Address = "Götgatan 1616, Göteborg",
                             DateOfBirth = new DateOnly(2007, 4, 28),
                             Email = "filip.oberg@schoolsync.com",
@@ -292,7 +292,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b9291e74-2d1f-46f5-9cac-a543d32f7e87"),
+                            Id = new Guid("5dd7e6b1-866a-4206-8454-4be6c089a515"),
                             Address = "Ekelundsgatan 1717, Göteborg",
                             DateOfBirth = new DateOnly(2005, 7, 8),
                             Email = "viktoria.pettersson@schoolsync.com",
@@ -302,7 +302,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("92324f80-857a-4228-981a-9f7449aeebb9"),
+                            Id = new Guid("f2950e7a-e009-4c39-bcb4-5b6556662ffc"),
                             Address = "Färjenäsgatan 1818, Göteborg",
                             DateOfBirth = new DateOnly(2006, 10, 19),
                             Email = "axel.sjoberg@schoolsync.com",
@@ -312,7 +312,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("979d1954-51c5-4a95-8e8a-b6c6b8b6fc9b"),
+                            Id = new Guid("b634d043-358f-453b-b3c7-eda9eadea167"),
                             Address = "Trädgårdsgatan 1919, Göteborg",
                             DateOfBirth = new DateOnly(2005, 12, 31),
                             Email = "isabelle.holm@schoolsync.com",
@@ -322,7 +322,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6a3092a6-a362-4033-a147-a881fc42a789"),
+                            Id = new Guid("b23c359f-a771-4e2e-9cdd-b593ea3f31a6"),
                             Address = "Mölndalsvägen 2020, Göteborg",
                             DateOfBirth = new DateOnly(2007, 2, 14),
                             Email = "marcus.lundqvist@schoolsync.com",
@@ -368,7 +368,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1123a714-cc25-4ded-a413-201c783b5d07"),
+                            Id = new Guid("064c1ae7-e623-4d19-a7bb-666f16f73a1b"),
                             Address = "Skolgatan 1, Göteborg",
                             DateOfBirth = new DateOnly(1980, 6, 15),
                             Email = "karin.lind@schoolsync.com",
@@ -378,7 +378,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("54000516-3d86-4157-8328-568ff56652fd"),
+                            Id = new Guid("0b528c16-f8eb-4a03-ad99-024e6079aa07"),
                             Address = "Lärargatan 2, Göteborg",
                             DateOfBirth = new DateOnly(1975, 9, 21),
                             Email = "anders.svensson@schoolsync.com",
@@ -388,7 +388,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("62357531-e10a-4071-9d3a-24cbe46f0775"),
+                            Id = new Guid("ece81dcf-e837-4776-9e78-9c7643a4c01a"),
                             Address = "Undervisningsvägen 3, Göteborg",
                             DateOfBirth = new DateOnly(1982, 11, 3),
                             Email = "camilla.eriksson@schoolsync.com",
@@ -398,7 +398,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6bc192c7-7983-4d0f-a99a-a8ba3a82ba53"),
+                            Id = new Guid("85234335-4352-4c8c-a08f-fcd5748934d7"),
                             Address = "Lärarvägen 4, Göteborg",
                             DateOfBirth = new DateOnly(1978, 2, 15),
                             Email = "mats.andersson@schoolsync.com",
@@ -408,7 +408,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("37538a8c-07be-4cc2-b0b3-e273e8b5d332"),
+                            Id = new Guid("0153faec-be7c-4b7f-8a25-a1aede55253a"),
                             Address = "Pedagogvägen 5, Göteborg",
                             DateOfBirth = new DateOnly(1985, 4, 28),
                             Email = "anna.hedstrom@schoolsync.com",
@@ -418,7 +418,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("99807e52-faf1-436c-ba58-424244ae738b"),
+                            Id = new Guid("83346e4d-85da-4e76-9a9a-db8399ff32ab"),
                             Address = "Lärarstråket 6, Göteborg",
                             DateOfBirth = new DateOnly(1973, 7, 8),
                             Email = "erik.berg@schoolsync.com",
@@ -428,7 +428,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("064fb9dc-b428-42be-be63-9bb487247d27"),
+                            Id = new Guid("4320e744-aa9d-475d-ae99-60fbd3232105"),
                             Address = "Utvecklingsgatan 7, Göteborg",
                             DateOfBirth = new DateOnly(1987, 10, 19),
                             Email = "sara.johansson@schoolsync.com",
@@ -438,7 +438,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bdf80c25-37f8-4669-b64d-d9e016883973"),
+                            Id = new Guid("7819cd81-3ad3-4d53-bb53-9f273f298304"),
                             Address = "Lärarvägen 8, Göteborg",
                             DateOfBirth = new DateOnly(1979, 1, 31),
                             Email = "johan.lund@schoolsync.com",
@@ -454,10 +454,12 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Username")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -467,8 +469,8 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("959dd5f4-9826-4c9f-acf7-2246cc9922a6"),
-                            Password = "$2a$11$QVtIV1aa/RKp5EgvV0i3U.RYpw25JkqYd5OOtz/l0XAyNldYzublO",
+                            Id = new Guid("06de645f-e069-4017-a538-8edcc2c72f91"),
+                            PasswordHash = "$2a$11$AhL0jK9QoGo984QXwvoPbupGTAcmsHcOib71zdvJLqLfJaT/AlI6q",
                             Username = "admin"
                         });
                 });
