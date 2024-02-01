@@ -26,6 +26,13 @@ namespace Infrastructure.Repositories.Teachers
 
         public async Task<Teacher> AddTeacher(Teacher newTeacher, CancellationToken cancellationToken)
         {
+            // Check if email is unique before adding a new teacher
+            var existingTeacherWithEmail = await _appDbContext.Teacher.FirstOrDefaultAsync(t => t.Email == newTeacher.Email);
+
+            if (existingTeacherWithEmail != null)
+            {
+                throw new Exception("Teacher with the same email already exists.");
+            }
             // Lägg till den nya läraren i DbSet och spara ändringarna i databasen
             _appDbContext.Teacher.Add(newTeacher);
             await _appDbContext.SaveChangesAsync(cancellationToken);
@@ -65,6 +72,10 @@ namespace Infrastructure.Repositories.Teachers
             {
                 var teacherToDelete = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id);
 
+                if (teacherToDelete == null)
+                {
+                    throw new Exception($"Teacher with ID {id} not found.");
+                }
                 _appDbContext.Remove(teacherToDelete!);
                 _appDbContext.SaveChangesAsync(cancellationToken);
                 return Task.FromResult(teacherToDelete!);

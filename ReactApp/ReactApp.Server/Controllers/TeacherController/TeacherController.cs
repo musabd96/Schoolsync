@@ -7,6 +7,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application.Dtos;
 using Application.Commands.Teachers.UpdateTeacher;
+using Application.Validators.GuidValidation;
+using Application.Validators.Teachers;
 
 namespace ReactApp.Server.Controllers.TeacherController
 {
@@ -15,10 +17,14 @@ namespace ReactApp.Server.Controllers.TeacherController
     public class TeacherController : Controller
     {
         internal readonly IMediator _mediator;
+        internal readonly TeacherValidator _teacherValidator;
+        internal readonly GuidValidator _guidValidator;
 
-        public TeacherController(IMediator mediator)
+        public TeacherController(IMediator mediator, TeacherValidator teacherValidator, GuidValidator guidValidator)
         {
             _mediator = mediator;
+            _teacherValidator = teacherValidator;
+            _guidValidator = guidValidator;
         }
         //Get all Teachers
         [HttpGet]
@@ -75,6 +81,36 @@ namespace ReactApp.Server.Controllers.TeacherController
         {
             try
             {
+                var validationResult = _guidValidator.Validate(teacherId);
+
+                if (!validationResult.IsValid)
+                {
+                    foreach (var error in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                validationResult = _teacherValidator.Validate(updatedTeacher);
+
+                if (!validationResult.IsValid)
+                {
+                    foreach (var error in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var command = new UpdateTeacherCommand(updatedTeacher, teacherId);
                 var result = await _mediator.Send(command);
 
@@ -86,7 +122,6 @@ namespace ReactApp.Server.Controllers.TeacherController
                 return StatusCode(500, "Internal Server Error");
             }
         }
-
         //Delete a teacher by id
         [HttpDelete]
         [Route("deleteTeacherById/{teacherId}")]
@@ -94,14 +129,29 @@ namespace ReactApp.Server.Controllers.TeacherController
         {
             try
             {
+                var validationResult = _guidValidator.Validate(teacherId);
+
+                if (!validationResult.IsValid)
+                {
+                    foreach (var error in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var query = new DeleteTeacherCommand(teacherId);
                 var teacher = await _mediator.Send(query);
+
                 return teacher != null ? Ok(teacher) : NotFound($"No teacher found with ID: {teacherId}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
-
+                Console.WriteLine($"Exception in DeleteTeacherById: {ex.Message}");
                 return StatusCode(500, "Internal Server Error");
             }
         }
@@ -112,6 +162,21 @@ namespace ReactApp.Server.Controllers.TeacherController
         {
             try
             {
+                var validationResult = _teacherValidator.Validate(teacherDto);
+
+                if (!validationResult.IsValid)
+                {
+                    foreach (var error in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    }
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var command = new AddTeacherCommand(teacherDto);
                 var result = await _mediator.Send(command);
 
@@ -119,7 +184,8 @@ namespace ReactApp.Server.Controllers.TeacherController
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                Console.WriteLine($"Exception in AddTeacher: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
             }
         }
     }
