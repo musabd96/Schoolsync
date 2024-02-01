@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Database;
 using Infrastructure.Repositories.Classrooms;
+using Infrastructure.Repositories.Courses;
 using Infrastructure.Repositories.Students;
 using Infrastructure.Repositories.Teachers;
 using Infrastructure.Repositories.Users;
@@ -17,6 +18,7 @@ namespace Infrastructure
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IClassroomRepository, ClassroomRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
 
             services.AddDbContext<AppDbContext>(options =>
             {

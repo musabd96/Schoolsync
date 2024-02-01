@@ -9,7 +9,7 @@ using ReactApp.Server.Controllers.TeacherController;
 namespace Tests.Teacher.Commands.UpdateTeacher
 {
     [TestFixture]
-    public class UpdateTeacherControllerTest
+    public class UpdateCourseControllerTest
     {
         private IMediator _mediator;
         private TeacherController _controller;

@@ -8,5 +8,6 @@ namespace Application.Dtos
 {
     public class CourseDto
     {
+        public string CourseName { get; set; } = string.Empty;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Classrooms;
+using Domain.Models.Course;
 using Domain.Models.Student;
 using Domain.Models.Teacher;
 using Domain.Models.Users;
@@ -70,6 +71,39 @@ namespace Infrastructure.Database.DbSeed
                 new() { Id = Guid.NewGuid(), ClassroomName = "Bohr" },
                 new() { Id = Guid.NewGuid(), ClassroomName = "Mendel" },
                 new() { Id = Guid.NewGuid(), ClassroomName = "Pasteur" }
+            );
+        }
+
+        public static void SeedCourses(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Course>().HasData(
+                new() { Id = Guid.NewGuid(), CourseName = "Svenska 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Svenska 2" },
+                new() { Id = Guid.NewGuid(), CourseName = "Svenska 3" },
+                new() { Id = Guid.NewGuid(), CourseName = "Engelska 5" },
+                new() { Id = Guid.NewGuid(), CourseName = "Engelska 6" },
+                new() { Id = Guid.NewGuid(), CourseName = "Engelska 7" },
+                new() { Id = Guid.NewGuid(), CourseName = "Matematik 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Matematik 2" },
+                new() { Id = Guid.NewGuid(), CourseName = "Matematik 3" },
+                new() { Id = Guid.NewGuid(), CourseName = "Matematik 4" },
+                new() { Id = Guid.NewGuid(), CourseName = "Naturkunskap 1a1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Naturkunskap 1a2" },
+                new() { Id = Guid.NewGuid(), CourseName = "Samhällskunskap 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Samhällskunskap 2" },
+                new() { Id = Guid.NewGuid(), CourseName = "Fysik 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Fysik 2" },
+                new() { Id = Guid.NewGuid(), CourseName = "Kemi 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Kemi 2" },
+                new() { Id = Guid.NewGuid(), CourseName = "Religion 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Biologi 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Geografi 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Psykologi 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Filosofi 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Programmering 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Programmering 2" },
+                new() { Id = Guid.NewGuid(), CourseName = "Ekonomi 1" },
+                new() { Id = Guid.NewGuid(), CourseName = "Ekonomi 2" }
             );
         }
     }

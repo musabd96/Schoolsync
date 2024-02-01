@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models.Course;
 
 namespace Infrastructure.Repositories.Courses
 {
-    internal class ICourseRepository
+    public interface ICourseRepository
     {
+        Task<List<Course>> GetAllCoursesAsync(CancellationToken cancellationToken);
+        Task<Course> UpdateCourse(Guid id, string CourseName, CancellationToken cancellationToken);
+
     }
 }
