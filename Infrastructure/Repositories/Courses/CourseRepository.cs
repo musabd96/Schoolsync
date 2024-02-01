@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models.Course;
+using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.Courses
 {
-    internal class CourseRepository
+    public class CourseRepository : ICourseRepository
     {
+        private readonly AppDbContext _appDbContext;
+        public CourseRepository(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+        public async Task<List<Course>> GetAllCoursesAsync(CancellationToken cancellationToken)
+        {
+            return await _appDbContext.Courses.ToListAsync();
+        }
     }
 }
