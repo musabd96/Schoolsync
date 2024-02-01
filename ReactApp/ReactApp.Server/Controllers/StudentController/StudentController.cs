@@ -4,10 +4,11 @@ using Application.Commands.Students.UpdateStudent;
 using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
 using Application.Queries.Students.GetStudentById;
+using Application.Validators.Students;
 using Domain.Models.Student;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 namespace ReactApp.Server.Controllers.StudentController
 {
     [Route("api/[controller]")]
@@ -16,10 +17,14 @@ namespace ReactApp.Server.Controllers.StudentController
     {
 
         private readonly IMediator _mediator;
-        public StudentController(IMediator mediator)
+        private readonly StudentValidator _studentValidator;
+
+        public StudentController(IMediator mediator, StudentValidator studentValidator)
         {
             _mediator = mediator;
+            _studentValidator = studentValidator;
         }
+
         //Get all Student
         [HttpGet]
         [Route("getAllStudents")]
@@ -72,6 +77,14 @@ namespace ReactApp.Server.Controllers.StudentController
         [Route("addStudent")]
         public async Task<IActionResult> AddStudent([FromBody] StudentDto studentDto)
         {
+            // Validate input using the validator
+            var validationResult = await _studentValidator.ValidateAsync(studentDto);
+
+            if (!validationResult.IsValid)
+            {
+                // Validation failed, return bad request with validation errors
+                return BadRequest(validationResult.Errors.Select(error => error.ErrorMessage));
+            }
             try
             {
                 var command = new AddStudentCommand(studentDto);
@@ -101,6 +114,12 @@ namespace ReactApp.Server.Controllers.StudentController
         [Route("updateStudent")]
         public async Task<IActionResult> UpdateStudent([FromBody] StudentDto updatedStudent, Guid updateStudent)
         {
+            var validationResult = await _studentValidator.ValidateAsync(updatedStudent);
+
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors.Select(error => error.ErrorMessage));
+            }
             try
             {
                 var command = new UpdateStudentCommand(updatedStudent, updateStudent);
@@ -112,16 +131,6 @@ namespace ReactApp.Server.Controllers.StudentController
             {
                 return StatusCode(500, ex.Message);
             }
-
         }
-
-
-
-
-
-
-
-
-
     }
 }
