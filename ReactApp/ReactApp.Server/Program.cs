@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.Application;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ReactApp.Server
 {

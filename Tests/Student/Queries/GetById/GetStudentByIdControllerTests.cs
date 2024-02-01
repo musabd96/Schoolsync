@@ -1,4 +1,5 @@
 ﻿using Application.Queries.Students.GetStudentById;
+using Application.Validators.Students;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -11,13 +12,15 @@ namespace Tests.Student.Queries.GetById
     public class GetStudentByIdControllerTests
     {
         private IMediator _mediator;
+        private StudentValidator _studentValidator;
         private StudentController _controller;
 
         [SetUp]
         public void Setup()
         {
             _mediator = Mock.Of<IMediator>();
-            _controller = new StudentController(_mediator);
+            _studentValidator = Mock.Of<StudentValidator>();
+            _controller = new StudentController(_mediator, _studentValidator);
         }
 
         [Test]

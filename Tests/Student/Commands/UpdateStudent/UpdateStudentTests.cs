@@ -51,7 +51,11 @@ namespace Tests.Student.Commands.UpdateStudent
                 updateStudent: new StudentDto
                 {
                     FirstName = "Test",
-                    LastName = "Testsson"
+                    LastName = "Testsson",
+                    DateOfBirth = new DateOnly(1990, 1, 15),
+                    Address = "123 Main St, Cityville",
+                    PhoneNumber = "07066665415",
+                    Email = "john.doe@example.com"
                 },
                 id: studentId
                 );
