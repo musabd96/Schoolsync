@@ -1,5 +1,4 @@
 ﻿using Domain.Models.Classrooms;
-using Domain.Models.Student;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +15,13 @@ namespace Infrastructure.Repositories.Classrooms
         public async Task<List<Classroom>> GetAllClassrooms(CancellationToken cancellationToken)
         {
             return await _appDbContext.Classrooms.ToListAsync(cancellationToken);
+        }
+
+        public Task <Classroom> GetClassroomById(Guid id, CancellationToken cancellationToken)
+        {
+            Classroom classroom = _appDbContext.Classrooms.FirstOrDefault(s => s.Id == id)!;
+
+            return Task.FromResult(classroom);
         }
 
         public async Task<Classroom> AddClassroom(Classroom newClassroom, CancellationToken cancellationToken)
@@ -42,5 +48,25 @@ namespace Infrastructure.Repositories.Classrooms
 
             return classroomToUpdate;
         }
+        public async Task<Classroom> DeleteClassroom(Guid classroomId, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var classroomToDelete = await _appDbContext.Classrooms.FirstOrDefaultAsync(c => c.Id == classroomId, cancellationToken);
+
+                if (classroomToDelete != null)
+                {
+                    _appDbContext.Remove(classroomToDelete);
+                    await _appDbContext.SaveChangesAsync(cancellationToken);
+                }
+
+                return classroomToDelete;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while deleting a classroom with ID {classroomId} from the database", ex);
+            }
+        }
+
     }
 }

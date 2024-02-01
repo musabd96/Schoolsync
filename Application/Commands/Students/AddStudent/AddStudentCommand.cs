@@ -1,8 +1,6 @@
-﻿
-using Application.Dtos;
+﻿using Application.Dtos;
 using Domain.Models.Student;
 using MediatR;
-using System;
 
 namespace Application.Commands.Students.AddStudent
 {

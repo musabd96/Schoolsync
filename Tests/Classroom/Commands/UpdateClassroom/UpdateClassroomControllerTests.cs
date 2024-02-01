@@ -1,5 +1,4 @@
 ﻿using Application.Commands.Classrooms.UpdateClassroom;
-using Application.Commands.Classrooms.UpdateClassroom;
 using Application.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

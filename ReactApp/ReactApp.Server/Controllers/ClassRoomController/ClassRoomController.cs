@@ -1,12 +1,11 @@
 ﻿using Application.Commands.Classrooms.AddClassroom;
+using Application.Commands.Classrooms.DeleteClassroom;
 using Application.Commands.Classrooms.UpdateClassroom;
-using Application.Commands.Students.AddStudent;
-using Application.Commands.Students.UpdateStudent;
 using Application.Dtos;
 using Application.Queries.Classrooms.GetAllClassrooms;
+using Application.Queries.Classrooms.GetClassroomsById;
 using Domain.Models.Classrooms;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ReactApp.Server.Controllers.ClassroomController
@@ -24,7 +23,6 @@ namespace ReactApp.Server.Controllers.ClassroomController
 
         [HttpGet]
         [Route("getAllClassrooms")]
-
         public async Task<IActionResult> GetAllClassrooms()
         {
             try
@@ -43,6 +41,26 @@ namespace ReactApp.Server.Controllers.ClassroomController
                 return StatusCode(500, ex.Message);
             }
         }
+
+        //GetClassroomById
+        [HttpGet]
+        [Route("getClassroomById/{classroomId}")]
+        public async Task<IActionResult> GetClassroomById(Guid classroomId)
+        {
+            try
+            {
+                var query = new GetClassroomByIdQuery(classroomId);
+                var classroom = await _mediator.Send(query);
+                return classroom != null ? Ok(classroom) : NotFound($"No classroom found with ID: {classroomId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetClassroomById: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
         // Add a new Classroom
         [HttpPost]
         [Route("addClassroom")]
@@ -60,6 +78,25 @@ namespace ReactApp.Server.Controllers.ClassroomController
                 return StatusCode(500, ex.Message);
             }
         }
+        // Delete a classroom by id
+        [HttpDelete]
+        [Route("deleteClassroomById/{classroomId}")]
+        public async Task<IActionResult> DeleteClassroomById(Guid classroomId)
+        {
+            try
+            {
+                var query = new DeleteClassroomCommand(classroomId);
+                var classroom = await _mediator.Send(query);
+                return classroom != null ? Ok(classroom) : NotFound($"No classroom found with ID: {classroomId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in DeleteClassroomById: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
 
 
         // Update a specific classroom
@@ -78,6 +115,7 @@ namespace ReactApp.Server.Controllers.ClassroomController
             {
                 return StatusCode(500, ex.Message);
             }
+
         }
     }
 }
