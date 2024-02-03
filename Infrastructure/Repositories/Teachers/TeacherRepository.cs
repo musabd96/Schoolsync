@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories.Teachers
 
         public Task<Teacher> GetTeacherById(Guid id, CancellationToken cancellationToken)
         {
-            Teacher teacher = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id)!;
+            var teacher = _appDbContext.Teacher.FirstOrDefaultAsync(t => t.Id == id)!;
 
             return Task.FromResult(teacher);
         }
@@ -70,7 +70,7 @@ namespace Infrastructure.Repositories.Teachers
         {
             try
             {
-                var teacherToDelete = _appDbContext.Teacher.FirstOrDefault(t => t.Id == id);
+				var teacherToDelete = await _appDbContext.Teacher.FirstOrDefaultAsync(t => t.Id == id);
 
                 if (teacherToDelete == null)
                 {
