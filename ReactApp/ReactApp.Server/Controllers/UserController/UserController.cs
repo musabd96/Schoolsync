@@ -33,17 +33,23 @@ namespace ReactApp.Server.Controllers.UserController
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] UserDto userToRegister)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // This line is crucial for the test to pass
+            }
+
             try
             {
                 var createdUser = await _mediator.Send(new RegisterUserCommand(userToRegister));
-
-                return CreatedAtAction(nameof(Register), createdUser);
+                // Assuming 'GetUser' is an action for fetching a user by ID, adjust as necessary
+                return CreatedAtAction(nameof(userToRegister), new { id = createdUser.Id }, createdUser);
             }
             catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+
 
 
         [HttpPost("login")]

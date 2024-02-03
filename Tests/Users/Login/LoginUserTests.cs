@@ -53,7 +53,7 @@ namespace Tests.Users.Login
             Assert.Multiple(() =>
             {
                 Assert.That(result, Is.Not.Null);
-                Assert.That(result, Is.EqualTo("Alice"));
+                Assert.That(result.Username, Is.EqualTo("Alice"));
             });
         }
 

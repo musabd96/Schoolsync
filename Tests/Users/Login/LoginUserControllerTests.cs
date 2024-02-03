@@ -1,7 +1,9 @@
 ﻿using Application.Dtos;
 using Application.Queries.Users.Login;
+using Domain.Models.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using NUnit.Framework;
 using ReactApp.Server.Controllers.UserController;
@@ -12,12 +14,18 @@ namespace Tests.Users.Login
     {
         private IMediator _mediator;
         private UserController _controller;
+        private Mock<IConfiguration> _configuration;
 
         [SetUp]
         public void Setup()
         {
             _mediator = Mock.Of<IMediator>();
-            _controller = new UserController(_mediator);
+            _configuration = new Mock<IConfiguration>();
+            _configuration.Setup(c => c["AppSettings:SecretKey"]).Returns(new string('a', 32));
+            _configuration.Setup(c => c["AppSettings:Issuer"]).Returns("TestIssuer");
+            _configuration.Setup(c => c["AppSettings:Audience"]).Returns("TestAudience");
+
+            _controller = new UserController(_mediator, _configuration.Object);
         }
 
         [Test]
@@ -25,28 +33,38 @@ namespace Tests.Users.Login
         {
             // Arrange
             var userDto = new UserDto { Username = "Alice", Password = "Wonderland" };
-            Mock.Get(_mediator).Setup(mock => mock.Send(It.IsAny<LoginUserQuery>(), CancellationToken.None))
-                             .ReturnsAsync(userDto.Username);
+            Mock.Get(_mediator)
+                .Setup(m => m.Send(It.IsAny<LoginUserQuery>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new User { Username = userDto.Username });
 
             // Act
             var result = await _controller.Login(userDto) as OkObjectResult;
 
             // Assert
-            Assert.That(result.Value, Is.EqualTo(userDto.Username));
-            Assert.That(result.StatusCode, Is.EqualTo(200));
+            Assert.IsNotNull(result); // Checks if the result is not null
+            Assert.AreEqual(200, result.StatusCode); // Checks if the status code is 200
+            Assert.IsNotNull(result.Value); // Checks if the result value is not null
         }
 
+
+
         [Test]
-        public async Task Login_InvalidUser_ReturnsBadRequest()
+        public async Task Login_UnauthorizedUser_ReturnsUnauthorized()
         {
             // Arrange
-            var invalidUserDto = new UserDto { Username = "invalid_username", Password = "some_password" };
+            var invalidUserDto = new UserDto { Username = "invalidUser", Password = "invalidPass" };
+
+            Mock.Get(_mediator)
+                .Setup(m => m.Send(It.IsAny<LoginUserQuery>(), It.IsAny<CancellationToken>()))
+                .ThrowsAsync(new UnauthorizedAccessException("Invalid credentials"));
 
             // Act
-            var result = await _controller.Login(invalidUserDto) as BadRequestObjectResult;
+            var result = await _controller.Login(invalidUserDto) as UnauthorizedObjectResult;
 
             // Assert
-            Assert.That(result, Is.Null);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(401, result.StatusCode);
+            Assert.AreEqual("Invalid credentials", result.Value);
         }
     }
 }
