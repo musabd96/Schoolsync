@@ -5,5 +5,6 @@ namespace Infrastructure.Repositories.Courses
     public interface ICourseRepository
     {
         Task<List<Course>> GetAllCoursesAsync(CancellationToken cancellationToken);
+        Task<Course> GetCourseById(Guid id, CancellationToken cancellationToken);
     }
 }
