@@ -19,10 +19,10 @@ namespace Application.Commands.Register
                 {
                     Id = Guid.NewGuid(),
                     Username = request.NewUser.Username,
-                    Password = BCrypt.Net.BCrypt.HashPassword(request.NewUser.Password),
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.NewUser.Password),
                 };
 
-                if (string.IsNullOrEmpty(userToCreate.Username) || string.IsNullOrEmpty(userToCreate.Password))
+                if (string.IsNullOrEmpty(userToCreate.Username) || string.IsNullOrEmpty(userToCreate.PasswordHash))
                 {
                     throw new ArgumentException("Username or password cannot be empty.");
                 }

@@ -1,11 +1,7 @@
 ﻿using Application.Commands.Students.DeleteStudent;
-using Domain.Models.Student;
 using Infrastructure.Repositories.Students;
 using Moq;
 using NUnit.Framework;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Tests.Student.Commands.Delete_Student
 {
@@ -44,7 +40,7 @@ namespace Tests.Student.Commands.Delete_Student
         {
             // Arrange
             var invalidId = Guid.NewGuid();
-            _studentRepository.Setup(repo => repo.GetStudentById(invalidId, It.IsAny<CancellationToken>())).ReturnsAsync((Domain.Models.Student.Student)null);
+            _studentRepository.Setup(repo => repo.GetStudentById(invalidId, It.IsAny<CancellationToken>())).ReturnsAsync((Domain.Models.Student.Student)null!);
 
             // Act
             var command = new DeleteStudentCommand(invalidId);

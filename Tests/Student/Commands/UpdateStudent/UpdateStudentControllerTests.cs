@@ -1,5 +1,7 @@
 ﻿using Application.Commands.Students.UpdateStudent;
+using Application.Validators.Students;
 using MediatR;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
@@ -11,13 +13,15 @@ namespace Tests.Student.Commands.UpdateStudent
     public class UpdateStudentControllerTests
     {
         private IMediator _mediator;
+        private StudentValidator _studentValidator;
         private StudentController _controller;
 
         [SetUp]
         public void Setup()
         {
             _mediator = Mock.Of<IMediator>();
-            _controller = new StudentController(_mediator);
+            _studentValidator = new StudentValidator();
+            _controller = new StudentController(_mediator, _studentValidator);
         }
 
         [Test]
@@ -29,6 +33,10 @@ namespace Tests.Student.Commands.UpdateStudent
             {
                 FirstName = "Test",
                 LastName = "Testsson",
+                DateOfBirth = new DateOnly(1990, 1, 15),
+                Address = "123 Main St, Cityville",
+                PhoneNumber = "07066665415",
+                Email = "john.doe@example.com"
             };
 
             var command = new UpdateStudentCommand(updatedStudentDto, updateStudentId);
@@ -45,7 +53,7 @@ namespace Tests.Student.Commands.UpdateStudent
         }
 
         [Test]
-        public async Task UpdateStudent_ShouldReturnInternalServerErrorOnException()
+        public async Task UpdateStudent_ShouldReturnBadRéquest()
         {
             // Arrange
             var updateStudentId = Guid.NewGuid();
@@ -61,7 +69,7 @@ namespace Tests.Student.Commands.UpdateStudent
             // Assert
             Assert.That(result, Is.InstanceOf<ObjectResult>());
             var objectResult = (ObjectResult)result;
-            Assert.That(objectResult.StatusCode, Is.EqualTo(500));
+            Assert.That(objectResult.StatusCode, Is.EqualTo(400));
         }
     }
 }

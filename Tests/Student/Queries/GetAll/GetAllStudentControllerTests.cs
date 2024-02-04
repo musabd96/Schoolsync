@@ -1,5 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Queries.Students.GetAllStudents;
+using Application.Validators.Students;
 using Domain.Models.Student;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ namespace Tests.Student.Queries.GetAll
     public class GetAllStudentControllerTests
     {
         private IMediator _mediator;
+        private StudentValidator _studentValidator;
         private StudentController _controller;
 
         [SetUp]
@@ -20,8 +22,8 @@ namespace Tests.Student.Queries.GetAll
         {
             // Initialize or mock IMediator implementation (dependency injection)
             _mediator = Mock.Of<IMediator>();
-
-            _controller = new StudentController(_mediator);
+            _studentValidator = Mock.Of<StudentValidator>();
+            _controller = new StudentController(_mediator, _studentValidator);
         }
 
         [Test]
