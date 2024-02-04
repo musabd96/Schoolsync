@@ -66,10 +66,10 @@ namespace ReactApp.Server.Controllers.UserController
                 {
                     Username = userToLogin.Username,
                     Password = userToLogin.Password
-                }; // Rename this variable if it's causing a conflict
+                };
 
                 var user = await _mediator.Send(new LoginUserQuery(userToAuthenticate));
-                var token = CreateToken(user); // Create a token for the logged-in user
+                var token = CreateToken(user);
 
                 return Ok(new { Token = token });
             }
@@ -78,10 +78,6 @@ namespace ReactApp.Server.Controllers.UserController
                 return Unauthorized(ex.Message);
             }
         }
-
-
-
-
 
         private string CreateToken(User user)
         {

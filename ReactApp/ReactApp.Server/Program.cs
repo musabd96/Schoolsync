@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Application.Validators.User;
+using FluentValidation.AspNetCore;
+
 
 
 namespace ReactApp.Server
@@ -22,19 +25,19 @@ namespace ReactApp.Server
             // Add Swagger/OpenApi support
             builder.Services.AddControllers(options =>
             {
-                // Apply a global authorization policy
+
                 var policy = new AuthorizationPolicyBuilder()
                                  .RequireAuthenticatedUser()
                                  .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
-            });
+            })
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UserValidator>());
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(SwaggerUiConfig =>
             {
                 SwaggerUiConfig.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
-                // Adding JWT Authentication definition to Swagger.
-                // This allows Swagger UI to send the JWT token in the Authorization header.
+
                 SwaggerUiConfig.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -45,8 +48,7 @@ namespace ReactApp.Server
                     Description = "JWT Authorization header using the Bearer scheme."
                 });
 
-                // Telling SwaggerUI that the API uses Bearer(JWT) authentication
-                // so you don't need to add the Bearer in front of the pasted token.
+
                 SwaggerUiConfig.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -66,16 +68,14 @@ namespace ReactApp.Server
 
 
 
-            // Configure JWT Bearer authentication.
             builder.Services.AddAuthentication(options =>
             {
-                // Setting the schemes to JWT Bearer.
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
             {
-                // Setting the parameters for validating incoming JWT tokens.
+
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
