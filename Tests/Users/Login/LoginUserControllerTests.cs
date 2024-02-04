@@ -42,7 +42,7 @@ namespace Tests.Users.Login
 
             // Assert
             Assert.IsNotNull(result); // Checks if the result is not null
-            Assert.AreEqual(200, result.StatusCode); // Checks if the status code is 200
+            Assert.That(result.StatusCode, Is.EqualTo(200)); // Checks if the status code is 200
             Assert.IsNotNull(result.Value); // Checks if the result value is not null
         }
 
@@ -63,8 +63,8 @@ namespace Tests.Users.Login
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(401, result.StatusCode);
-            Assert.AreEqual("Invalid credentials", result.Value);
+            Assert.That(result.StatusCode, Is.EqualTo(401));
+            Assert.That(result.Value, Is.EqualTo("Invalid credentials"));
         }
     }
 }

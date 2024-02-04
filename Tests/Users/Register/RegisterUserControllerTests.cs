@@ -41,11 +41,11 @@ namespace Tests.Users.Register
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(201, result.StatusCode);
-            Assert.AreEqual(nameof(_controller.Register), result.ActionName);
+            Assert.That(result.StatusCode, Is.EqualTo(201));
+            Assert.That(result.ActionName, Is.EqualTo(nameof(_controller.Register)));
 
             Assert.IsNotNull(result.Value);
-            Assert.AreEqual(createdUser, result.Value);
+            Assert.That(result.Value, Is.EqualTo(createdUser));
         }
 
 
@@ -70,7 +70,7 @@ namespace Tests.Users.Register
 
             var badRequestResult = result as BadRequestObjectResult;
             Assert.IsNotNull(badRequestResult, "Result should be of type BadRequestObjectResult.");
-            Assert.AreEqual(400, badRequestResult.StatusCode, "Status code should be 400.");
+            Assert.That(badRequestResult.StatusCode, Is.EqualTo(400), "Status code should be 400.");
 
             var errors = badRequestResult.Value as SerializableError;
             Assert.IsNotNull(errors, "Result should contain errors.");

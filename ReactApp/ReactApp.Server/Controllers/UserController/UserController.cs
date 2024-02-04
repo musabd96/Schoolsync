@@ -34,7 +34,7 @@ namespace ReactApp.Server.Controllers.UserController
         public async Task<IActionResult> Register([FromBody] UserDto userToRegister)
         {
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
