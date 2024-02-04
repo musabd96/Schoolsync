@@ -6,6 +6,6 @@ namespace Infrastructure.Repositories.Courses
     {
         Task<List<Course>> GetAllCoursesAsync(CancellationToken cancellationToken);
         Task<Course> UpdateCourse(Guid id, string CourseName, CancellationToken cancellationToken);
-
+        Task<Course> DeleteCourse(Guid id, CancellationToken cancellationToken);
     }
 }

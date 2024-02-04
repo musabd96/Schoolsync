@@ -66,3 +66,23 @@ namespace ReactApp.Server.Controllers.CourseController
         }
     }
 }
+        //Delete courses by id
+        [HttpDelete]
+        [Route("deleteCourseById/{courseId}")]
+        public async Task<IActionResult> DeleteCourseById(Guid courseId)
+        {
+            try
+            {
+                var query = new DeleteCourseCommand(courseid);
+                var course = await _mediator.send(query);
+                return course != null ? ok(course) : NotFound($"No course found with ID: {courseId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetCourseById: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+    }
+}

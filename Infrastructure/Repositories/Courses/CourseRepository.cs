@@ -39,3 +39,25 @@ namespace Infrastructure.Repositories.Courses
         }
     }
 }
+        public async Task<Course> DeleteCourse(Guid courseId, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var courseToDelete = await _appDbContext.Course.FirstOrDefaultAsync(c => c.Id == courseId, cancellationToken);
+
+                if (courseToDelete != null)
+                {
+                    _appDbContext.Remove(courseToDelete);
+                    await _appDbContext.SaveChangesAsync(cancellationToken);
+                }
+
+                return courseToDelete;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while deleting a course with ID {courseId} from the database", ex);
+            }
+        }
+
+    }
+}
