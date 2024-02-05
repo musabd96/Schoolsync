@@ -17,7 +17,7 @@ namespace Infrastructure.Repositories.Classrooms
             return await _appDbContext.Classrooms.ToListAsync(cancellationToken);
         }
 
-        public Task <Classroom> GetClassroomById(Guid id, CancellationToken cancellationToken)
+        public Task<Classroom> GetClassroomById(Guid id, CancellationToken cancellationToken)
         {
             Classroom classroom = _appDbContext.Classrooms.FirstOrDefault(s => s.Id == id)!;
 

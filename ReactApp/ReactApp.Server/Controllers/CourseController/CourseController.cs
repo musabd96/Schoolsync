@@ -1,4 +1,6 @@
-﻿using Application.Queries.Courses.GetAllCourses;
+﻿using Application.Commands.Courses.UpdateCourse;
+using Application.Dtos;
+using Application.Queries.Courses.GetAllCourses;
 using Application.Queries.Courses.GetCoursesById;
 using Domain.Models.Course;
 using MediatR;
@@ -65,5 +67,23 @@ namespace ReactApp.Server.Controllers.CourseController
             }
         }
 
+        // Update a course
+        [HttpPut]
+        [Route("updateCourse/{courseId}")]
+        public async Task<IActionResult> UpdateCourse([FromBody] CourseDto updatedCourse, Guid courseId)
+        {
+            try
+            {
+                var command = new UpdateCourseCommand(updatedCourse, courseId);
+                var result = await _mediator.Send(command);
+
+                return result != null ? Ok(result) : NotFound($"No course found with ID: {courseId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in UpdateCourse: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }
