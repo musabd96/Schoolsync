@@ -4,32 +4,32 @@ using MediatR;
 
 namespace Application.Queries.Courses.GetCoursesById
 {
-    
-        public class GetCourseByIdQueryHandler : IRequestHandler<GetCourseByIdQuery, Course>
+
+    public class GetCourseByIdQueryHandler : IRequestHandler<GetCourseByIdQuery, Course>
+    {
+        private readonly ICourseRepository _courseRepository;
+
+        public GetCourseByIdQueryHandler(ICourseRepository courseRepository)
         {
-            private readonly ICourseRepository _courseRepository;
-
-            public GetCourseByIdQueryHandler(ICourseRepository courseRepository)
-            {
             _courseRepository = courseRepository;
-            }
+        }
 
-            public async Task<Course> Handle(GetCourseByIdQuery request, CancellationToken cancellationToken)
-            {
+        public async Task<Course> Handle(GetCourseByIdQuery request, CancellationToken cancellationToken)
+        {
             Course wantedCourse = await _courseRepository.GetCourseById(request.Id, cancellationToken);
 
-                try
+            try
+            {
+                if (wantedCourse == null)
                 {
-                    if (wantedCourse == null)
-                    {
-                        return null!;
-                    }
-                    return wantedCourse;
+                    return null!;
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+                return wantedCourse;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }
+}
