@@ -1,6 +1,7 @@
 ﻿using Application.Commands.Courses.UpdateCourse;
 using Application.Dtos;
 using Application.Queries.Courses.GetAllCourses;
+using Application.Queries.Courses.GetCoursesById;
 using Domain.Models.Course;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +44,26 @@ namespace ReactApp.Server.Controllers.CourseController
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
+
+
+            }
+        }
+        // Get Course By Id
+        [HttpGet]
+        [Route("getCourseById/{courseId}")]
+        public async Task<IActionResult> GetCourseById(Guid courseId)
+        {
+            try
+            {
+                var query = new GetCourseByIdQuery(courseId);
+                var course = await _mediator.Send(query);
+                return course != null ? Ok(course) : NotFound($"No course found with ID: {courseId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception in GetTeacherById: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
             }
         }
 

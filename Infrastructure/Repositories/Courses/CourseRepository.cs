@@ -37,5 +37,12 @@ namespace Infrastructure.Repositories.Courses
                 throw new Exception($"An error occurred while updating a couse with ID {id} in the database", ex);
             }
         }
+
+        public Task<Course> GetCourseById(Guid id, CancellationToken cancellationToken)
+        {
+            Course course = _appDbContext.Courses.FirstOrDefault(c => c.Id == id)!;
+
+            return Task.FromResult(course);
+        }
     }
 }
