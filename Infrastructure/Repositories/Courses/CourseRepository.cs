@@ -15,5 +15,12 @@ namespace Infrastructure.Repositories.Courses
         {
             return await _appDbContext.Courses.ToListAsync();
         }
+
+        public Task<Course> GetCourseById(Guid id, CancellationToken cancellationToken)
+        {
+            Course course = _appDbContext.Courses.FirstOrDefault(c => c.Id == id)!;
+
+            return Task.FromResult(course);
+        }
     }
 }

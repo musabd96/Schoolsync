@@ -1,4 +1,5 @@
 ﻿using Application.Queries.Courses.GetAllCourses;
+using Application.Queries.Courses.GetCoursesById;
 using Domain.Models.Course;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
